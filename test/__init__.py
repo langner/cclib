@@ -11,4 +11,4 @@
 __revision__ = "$Revision$"
 
 # Convenience methods.
-from . import testall.testall
+from testall import testall
