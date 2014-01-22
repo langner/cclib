@@ -15,6 +15,7 @@ To run the doctest, just use "python regression.py test".
 """
 
 __revision__ = "$Revision$"
+from __future__ import print_function
 
 import os
 import sys
