@@ -27,5 +27,10 @@
   basis
     *    library sto-3g
   end
-  task scf
+
+  dft
+    xc b3lyp
+  end
+
+  task dft optimize
 

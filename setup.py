@@ -1,4 +1,15 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+#
+# This file is part of cclib (http://cclib.sf.net), a library for parsing
+# and interpreting the results of computational chemistry packages.
+#
+# Copyright (C) 2006-2014, the cclib development team
+#
+# The library is free software, distributed under the terms of
+# the GNU Lesser General Public version 2.1 or later. You should have
+# received a copy of the license along with cclib. You can also access
+# the full license online at http://www.gnu.org/copyleft/lgpl.html.
+
 """cclib: parsers and algorithms for computational chemistry
 
 cclib is a Python library that provides parsers for computational
@@ -10,7 +21,7 @@ doclines = __doc__.split("\n")
 
 # Chosen from http://www.python.org/pypi?:action=list_classifiers
 classifiers = """\
-Development Status :: 4 - Beta
+Development Status :: 5 - Production/Stable
 Environment :: Console
 Intended Audience :: Science/Research
 Intended Audience :: Developers
@@ -24,6 +35,7 @@ Topic :: Software Development :: Libraries :: Python Modules
 
 programs = ['ADF', 'GAMESS', 'GAMESS-UK', 'Gaussian', 'Jaguar', 'Molpro', 'ORCA']
 
+
 def setup_cclib():
 
     import os
@@ -34,6 +46,7 @@ def setup_cclib():
         sys.argv.pop(sys.argv.index('egg'))
         from setuptools import setup
     from distutils.core import setup
+    from distutils.sysconfig import get_python_lib
 
     # Setup the list of packages.
     cclib_packages = ['cclib',
@@ -41,12 +54,12 @@ def setup_cclib():
                       'cclib.test']
 
     # Setup the list of data files.
-    cclib_prefix = 'lib/python%i.%i/site-packages/cclib' %(sys.version_info[0], sys.version_info[1])
+    cclib_prefix = get_python_lib()
     test_prefix = cclib_prefix + '/test'
     data_prefix = cclib_prefix + '/data'
     cclib_datafiles = [ (cclib_prefix, ['ANNOUNCE', 'CHANGELOG', 'INSTALL', 'LICENSE', 'README', 'THANKS']),
                         (test_prefix, ['test/testdata']),
-                        (data_prefix, ['data/regressionfiles.txt', 'data/wget.sh'])]
+                        (data_prefix, ['data/regressionfiles.txt', 'data/regression_download.sh'])]
     for program in programs:
         data_dirs = os.listdir('data/%s' %program)
         for data_dir in data_dirs:
@@ -58,7 +71,7 @@ def setup_cclib():
 
     setup(
         name = "cclib",
-        version = "0.8",
+        version = "1.1",
         url = "http://cclib.sf.net",
         author = "cclib development team",
         author_email = "cclib-users@lists.sourceforge.net",
@@ -73,6 +86,7 @@ def setup_cclib():
         package_dir = {'cclib':'src/cclib', 'cclib.test':'test'},
         packages = cclib_packages,
         data_files = cclib_datafiles )
+
 
 if __name__ == '__main__':
     setup_cclib()
