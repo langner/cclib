@@ -1,4 +1,4 @@
-**WARNING: this branch is out of date and not merged with https://github.com/cclib/cclib/tree/python2**
+WARNING: this branch is out of date and not merged with https://github.com/cclib/cclib/tree/python2
 
 cclib is a Python library that provides parsers for output files of computational chemistry packages. It also provides a platform for computational chemists to implement algorithms in a platform-independent way.
 
