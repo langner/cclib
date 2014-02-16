@@ -7,6 +7,14 @@ class ccCollection(object):
         self.sources = sources
         self.data = [None]*len(self.sources)
 
-    def parse(self):
+    def parse_all(self):
         for i,source in enumerate(self.sources):
             self.data[i] = ccopen(source).parse()
+
+    def parse_next(self):
+        if None in self.data:
+            i = self.data.index(None)
+            self.data[i] = ccopen(self.sources[i]).parse()
+            return i
+        else:
+            return None
