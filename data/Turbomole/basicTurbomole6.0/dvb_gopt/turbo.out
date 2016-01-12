@@ -1,0 +1,2139 @@
+#CCLIB Turbomole
+#CCLIB basis
+$basis
+*
+c sto-3g hondo
+# c     (6s3p) / [2s1p]     {33/3}
+*
+   3  s
+  71.616837000      0.15432897000
+  13.045096000      0.53532814000
+  3.5305122000      0.44463454000
+   3  s
+  2.9412494000     -0.99967229000E-01
+ 0.68348310000      0.39951283000
+ 0.22228992000      0.70011547000
+   3  p
+  2.9412494000      0.15591628000
+ 0.68348310000      0.60768372000
+ 0.22228992000      0.39195739000
+*
+h sto-3g hondo
+# h     (3s) / [1s]     {3}
+*
+   3  s
+  3.4252510000      0.15432897000
+ 0.62391374000      0.53532814000
+ 0.16885541000      0.44463454000
+*
+$end
+#CCLIB control
+$operating system unix
+$title
+$symmetry c1
+$redundant    file=coord
+$coord    file=coord
+$user-defined bonds    file=coord
+$atoms
+c  1-5,9-10,14,16,19                                                           \
+   basis =c sto-3g hondo
+h  6-8,11-13,15,17-18,20                                                       \
+   basis =h sto-3g hondo
+$basis    file=basis
+$rundimensions
+   dim(fock,dens)=1860
+   natoms=20
+   nshell=40
+   nbf(CAO)=60
+   nbf(AO)=60
+   dim(trafo[SAO<-->AO/CAO])=60
+   rhfshells=1
+$scfmo   file=mos
+$closed shells
+ a       1-35                                   ( 2 )
+$scfiterlimit       30
+$thize     0.10000000E-04
+$thime        5
+$scfdump
+$scfintunit
+ unit=30       size=0        file=twoint
+$scfdiis
+$scforbitalshift  automatic=.1
+$drvopt
+   cartesian  on
+   basis      off
+   global     off
+   hessian    on
+   dipole     on
+   nuclear polarizability
+$interconversion  off
+   qconv=1.d-7
+   maxiter=25
+$optimize
+   internal   on
+   redundant  on
+   cartesian  off
+   global     off
+   basis      off   logarithm
+$coordinateupdate
+   dqmax=0.3
+   interpolate  on
+   statistics    5
+$forceupdate
+   ahlrichs numgeo=8  mingeo=3 maxgeo=4 modus=<g|dq> dynamic fail=0.3
+   threig=0.005  reseig=0.005  thrbig=3.0  scale=1.00  damping=0.0
+$forceinit off
+   diag=default
+$energy    file=energy
+$grad    file=gradient
+$forceapprox    file=forceapprox
+$lock off
+$dft
+   functional b-p
+   gridsize   m3
+$scfconv   6
+$scfdamp   start=0.700  step=0.050  min=0.050
+$last step     dscf
+$last SCF energy change = 0.11580914E-06
+$dipole from dscf
+  x     0.00000022585643    y    -0.00000892012688    z    -0.00000003281325    a.u.
+   | dipole | =    0.0000226803  debye
+$maximum norm of cartesian gradient = 0.73909788E-04
+$maximum norm of internal gradient = 0.11733791E-03
+$optinfo       file=optinfo
+$hessapprox   file=hessapprox
+$orbital_max_rnorm 0.69873602246280E-04
+$end
+#CCLIB job.last
+
+OPTIMIZATION CYCLE 2
+lun ene 11 18:10:50 CET 2016
+ operating system is UNIX !
+ hostname is         nodo05
+
+ grad(nodo05) : TURBOMOLE V6.0 5 Feb 2009 at 14:39:24
+ Copyright (C) 2009 TURBOMOLE GmbH, Karlsruhe
+
+
+    2016-01-11 18:10:50.916 
+
+
+
+                             g r a d - program
+
+                reinhart ahlrichs, hans horn & ansgar schaefer
+                 density functional version : oliver treutler
+
+
+                          quantum chemistry group
+                          universitaet  karlsruhe
+                                   germany
+
+
+
+
+                                                 
+                                 References:     
+                                                 
+          Density Functional:                              
+              O. Treutler and R. Ahlrichs                      
+              Efficient Molecular Numerical Integration Schemes
+              J. chem. Phys. 102: 346 (1995)                   
+          Parallel Version:                                
+              Performance of parallel TURBOMOLE for Density    
+              Functional Calculations                          
+              M. v.Arnim and R. Ahlrichs                      
+              J. comp. Chem. 19: 1746 (1998)                   
+                                         
+
+
+
+
+              +--------------------------------------------------+
+              | Atomic coordinate, charge and isotop information |
+              +--------------------------------------------------+
+
+
+              atomic coordinates              atom shells charge pseudo isotop
+    -2.69168260   -0.00015752   -0.44717769    c      3    6.000    0     0
+    -1.69855373   -0.00022106    2.06486160    c      3    6.000    0     0
+     0.92675746   -0.00024109    2.49595745    c      3    6.000    0     0
+     2.69168261   -0.00015750    0.44717768    c      3    6.000    0     0
+     1.69855375   -0.00022097   -2.06486159    c      3    6.000    0     0
+    -3.00425809   -0.00027743    3.69223504    h      1    1.000    0     0
+     1.65161350   -0.00034511    4.45456251    h      1    1.000    0     0
+     3.00425807   -0.00027720   -3.69223505    h      1    1.000    0     0
+     5.46166054    0.00006164    1.01485388    c      3    6.000    0     0
+     7.37273532    0.00036035   -0.68858764    c      3    6.000    0     0
+     7.04341556    0.00045206   -2.74538332    h      1    1.000    0     0
+     5.92881674    0.00003428    3.05387537    h      1    1.000    0     0
+     9.36334691    0.00054112   -0.07457702    h      1    1.000    0     0
+    -5.46166055    0.00006168   -1.01485389    c      3    6.000    0     0
+    -5.92881674    0.00003435   -3.05387539    h      1    1.000    0     0
+    -7.37273533    0.00036038    0.68858764    c      3    6.000    0     0
+    -7.04341556    0.00045205    2.74538332    h      1    1.000    0     0
+    -9.36334693    0.00054119    0.07457703    h      1    1.000    0     0
+    -0.92675745   -0.00024110   -2.49595746    c      3    6.000    0     0
+    -1.65161342   -0.00034535   -4.45456254    h      1    1.000    0     0
+ 
+
+     center of nuclear mass  :    0.00000000   -0.00003019    0.00000000
+
+     center of nuclear charge:    0.00000000   -0.00002230    0.00000000
+
+
+              +--------------------------------------------------+
+              |               basis set information              |
+              +--------------------------------------------------+
+
+
+              we will work with the  1s 3p 5d  7f  9g ... basis set
+              ...i.e. with spherical basis functions...
+
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    c       10     15      5   sto-3g hondo   [2s1p|6s3p]
+    h       10      3      1   sto-3g hondo   [1s|3s]
+   ---------------------------------------------------------------------------
+   total:   20    180     60
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :   12
+   total number of contracted shells         :   40
+   total number of cartesian basis functions :   60
+   total number of SCF-basis functions       :   60
+
+
+ integral neglect threshold       :  0.56E-09
+ integral storage threshold THIZE :  0.10E-04
+ integral storage threshold THIME :         5
+
+
+ symmetry group of the molecule :   c1 
+
+ the group has the following generators :
+   c1(z)
+
+    1 symmetry operations found
+
+ there are 1 real representations :   a   
+
+ maximum number of shells which are related by symmetry :  1
+
+
+    mo occupation :
+   irrep   mo's   occupied
+    a       60       35
+ 
+ number of basis functions   :           60
+ number of occupied orbitals :           35
+ 
+
+ number of off-diagonal lagrangians expected :  0
+  MOs are in ASCII format !
+
+
+ reading orbital data $scfmo  from file mos . 
+
+ orbital characterization : scfconv=6
+ 
+
+         --------------------------------------------------------------
+                   checking mo's by calculating trace(D*S)
+
+              number of electrons : 
+                 from trace(D*S)         :   70.000000000879
+                 from occupation numbers :   70.000000000000
+
+              molecular charge           :    0.000000000000
+         --------------------------------------------------------------
+
+ time elapsed for calculating density matrices :   0.001 sec
+
+  grad preliminaries : cpu elapsed         0.009 s
+                       wall                0.010 s
+  
+           ------------------
+           density functional
+           ------------------
+ B-P86 functional
+ exchange:    LDA + Becke (B88)
+ correlation: LDA (VWN) + Perdew (P86)
+ iterations will be done with small grid
+  
+ spherical integration : Lebedev's spherical grid
+ spherical gridsize    :           3
+    i.e. gridpoints    :         302
+ value for diffuse not defined
+ radial integration    : Chebyshev 2nd kind (scaling 3)
+ radial gridsize       :           3
+ integration cells     :          20
+ partition function    : becke
+ partition sharpness   :           3
+  
+
+ <rddim> : input of entry tasksize
+           from data group '$pardft' failed !
+
+               Default values taken
+
+ <rddim> : input of entry memdiv
+           from data group '$pardft' failed !
+
+               Default values taken
+
+
+
+                    and now featuring
+                             the super-duper gradient    ..... wow .....
+
+
+ ------------------------------------------------------------------------------
+
+            SCF ENERGY GRADIENT with respect to NUCLEAR COORDINATES            
+
+ ------------------------------------------------------------------------------
+
+
+
+    ----------------------------------------
+     S+T+V CONTRIBUTIONS TO ENERGY GRADIENT 
+    ----------------------------------------
+
+ 1e-integral 1st. derivatives will be neglected if expon. factor < 0.100000E-10
+
+
+  .... end of 1e gradient ....
+  cpu time for 1e-part of gradient :      0.04 sec
+
+
+    -----------------------------------------------
+     TWO ELECTRON CONTRIBUTIONS TO ENERGY GRADIENT 
+    -----------------------------------------------
+
+ biggest 1-particle AO density matrix element is expected to be    2.0669229011
+
+ core memory to be involved in 2e-gradient :
+   symmetry shell pair data              :         1
+   one and two particle density          :      2731
+   derivative integrals                  :       594
+   ij-primitive data                     :        81
+   derivative integral bound             :      2460
+   totally                               :      5866
+
+
+ setting up bound for integral derivative estimation
+
+ increment for numerical differentiation : 0.00050000
+
+ biggest AO integral is expected to be     3.541948133
+ biggest cartesian 1st derivative AO integral is expected to be     5.490096976
+
+ cpu time for 2e-integral derivative bound :      0.03 sec
+
+
+ 2e-integral 1st. derivatives will be neglected if expon. factor < 0.100000E-06
+ outer boundary for 2e-integral derivative neglection is 0.390122E-08
+
+
+  .... end of 2e gradient ....
+  cpu time for 2e-part of gradient :      0.01 min
+
+          Overall gridpoints after grid construction =         96316
+
+ Integrated ground state density     :   69.99981340065513    
+
+
+          ------------------------------------------------
+           cartesian gradient of the energy (hartree/bohr)
+          ------------------------------------------------
+
+  ATOM      1 c           2 c           3 c           4 c           5 c 
+ dE/dx -0.1119312D-04 0.7411019D-05 0.1212908D-04 0.1119429D-04-0.7405380D-05
+ dE/dy -0.2246470D-05 0.3533912D-06-0.8398805D-07-0.2252784D-05 0.3581630D-06
+ dE/dz  0.1513012D-05 0.2652381D-05-0.7697329D-05-0.1512824D-05-0.2650155D-05
+
+  ATOM      6 h           7 h           8 h           9 c          10 c 
+ dE/dx -0.2116791D-05-0.7331802D-05 0.2114543D-05-0.1659484D-04-0.3419587D-05
+ dE/dy -0.9914074D-06-0.2398599D-05-0.9868660D-06 0.5580273D-05-0.3357365D-05
+ dE/dz  0.1517636D-05 0.3959861D-05-0.1517844D-05-0.4109983D-05 0.6831913D-05
+
+  ATOM     11 h          12 h          13 h          14 c          15 h 
+ dE/dx  0.4138321D-05 0.5576370D-05 0.2963738D-05 0.1659315D-04-0.5576148D-05
+ dE/dy -0.2554658D-05 0.3796181D-05 0.1894665D-05 0.5583642D-05 0.3796803D-05
+ dE/dz -0.6320783D-05-0.1755340D-05-0.9295026D-05 0.4108963D-05 0.1754560D-05
+
+  ATOM     16 c          17 h          18 h          19 c          20 h 
+ dE/dx  0.3418419D-05-0.4137863D-05-0.2964834D-05-0.1213410D-04 0.7335534D-05
+ dE/dy -0.3358430D-05-0.2555014D-05 0.1894810D-05-0.8221585D-07-0.2406886D-05
+ dE/dz -0.6832074D-05 0.6322235D-05 0.9294898D-05 0.7698046D-05-0.3962153D-05
+ 
+ resulting FORCE  (fx,fy,fz) = (-.139D-10,-.168D-07,-.639D-11)
+ resulting MOMENT (mx,my,mz) = (0.397D-08,0.258D-03,0.371D-08)
+
+
+ exx =      -0.000006 eyy =       0.000000 ezz =       0.000025
+ eyz =       0.000000 exz =      -0.000127 exy =       0.000000
+
+
+ **********************************************************************
+  |maximum component of gradient| : 0.16594843E-04  (atom  9 c )       
+   gradient norm                  : 0.46650783E-04
+ **********************************************************************
+   ***  cartesian gradients written onto <gradient>  ***
+
+
+     --- calculation of the energy gradient finished ---
+
+
+
+    ------------------------------------------------------------------------
+         total  cpu-time :   1.49 seconds
+         total wall-time :   1.49 seconds
+    ------------------------------------------------------------------------
+
+
+   ****  grad : all done  ****
+
+
+    2016-01-11 18:10:52.409 
+
+fine, there is no data group "$actual step"
+next step = relax
+ operating system is UNIX !
+ hostname is         nodo05
+
+ statpt(nodo05) : TURBOMOLE V6.0 5 Feb 2009 at 10:04:41
+ Copyright (C) 2009 TURBOMOLE GmbH, Karlsruhe
+
+
+    2016-01-11 18:10:52.694 
+
+
+
+                           this is S T A T P T   
+
+
+                     hessian and coordinate update for
+                          stationary point search 
+
+                     by barbara unterreiner, marek sierka,
+                           and reinhart ahlrichs
+
+                          quantum chemistry group
+                          universitaet  karlsruhe
+                                  germany
+
+
+  Keyword $statpt not found - using default options
+ 
+        ***************  Stationary point options ******************
+        ************************************************************
+           Maximum allowed trust radius:           3.000000E-01
+           Minimum allowed trust radius:           1.000000E-03
+           Initial trust radius:                   1.500000E-01
+           GDIIS used if gradient norm <           1.000000E-02
+           Number of previous steps for GDIIS:       5
+           Hessian update method:                  BFGS
+                        *** Convergence criteria ***                
+           Threshold for energy change:            1.000000E-06
+           Threshold for max displacement element: 1.000000E-03
+           Threshold for max gradient element :    1.000000E-03
+           Threshold for RMS of displacement:      5.000000E-04
+           Threshold for RMS of gradient:          5.000000E-04
+        ************************************************************
+ 
+     Number of symmetry restricted degrees of freedom:    60
+     Constituted by:     3 translational degrees of freedom
+                         3 rotational degrees of freedom
+                      54 internal degrees of freedom
+
+  *************************************************************************
+   ATOM                      CARTESIAN COORDINATES
+    1 c      -2.69168259939389     -0.00015751689519     -0.44717768569127
+    2 c      -1.69855372815169     -0.00022105618999      2.06486160019718
+    3 c       0.92675746213371     -0.00024108964000      2.49595745165665
+    4 c       2.69168260619519     -0.00015750193114      0.44717767913013
+    5 c       1.69855374735988     -0.00022097341835     -2.06486159115470
+    6 h      -3.00425808912507     -0.00027743452806      3.69223504382450
+    7 h       1.65161350243780     -0.00034510622351      4.45456251095106
+    8 h       3.00425807359425     -0.00027720449247     -3.69223505239496
+    9 c       5.46166053506207      0.00006164482281      1.01485388008154
+   10 c       7.37273532205773      0.00036035301966     -0.68858763811692
+   11 h       7.04341555898525      0.00045205605716     -2.74538331541603
+   12 h       5.92881673515561      0.00003427804799      3.05387537460434
+   13 h       9.36334690952699      0.00054111786120     -0.07457701712434
+   14 c      -5.46166054526170      0.00006167580025     -1.01485388808074
+   15 h      -5.92881673679745      0.00003435316017     -3.05387538868277
+   16 c      -7.37273533477910      0.00036038184490      0.68858763857827
+   17 h      -7.04341555713367      0.00045205104642      2.74538332229090
+   18 h      -9.36334693138330      0.00054118619444      0.07457702610741
+   19 c      -0.92675744690888     -0.00024110059243     -2.49595745677936
+   20 h      -1.65161342245762     -0.00034534568292     -4.45456254421443
+  *************************************************************************
+   ATOM                      CARTESIAN GRADIENTS  
+    1 c      -0.00001119311979     -0.00000224646989      0.00000151301168
+    2 c       0.00000741101895      0.00000035339119      0.00000265238122
+    3 c       0.00001212907695     -0.00000008398805     -0.00000769732944
+    4 c       0.00001119429108     -0.00000225278391     -0.00000151282376
+    5 c      -0.00000740537960      0.00000035816296     -0.00000265015549
+    6 h      -0.00000211679086     -0.00000099140738      0.00000151763609
+    7 h      -0.00000733180249     -0.00000239859869      0.00000395986084
+    8 h       0.00000211454303     -0.00000098686602     -0.00000151784411
+    9 c      -0.00001659484347      0.00000558027348     -0.00000410998342
+   10 c      -0.00000341958668     -0.00000335736499      0.00000683191277
+   11 h       0.00000413832134     -0.00000255465840     -0.00000632078294
+   12 h       0.00000557637046      0.00000379618056     -0.00000175533957
+   13 h       0.00000296373757      0.00000189466464     -0.00000929502567
+   14 c       0.00001659314520      0.00000558364240      0.00000410896310
+   15 h      -0.00000557614847      0.00000379680290      0.00000175455997
+   16 c       0.00000341841865     -0.00000335843002     -0.00000683207366
+   17 h      -0.00000413786331     -0.00000255501371      0.00000632223522
+   18 h      -0.00000296483378      0.00000189480985      0.00000929489797
+   19 c      -0.00001213410285     -0.00000008221585      0.00000769804551
+   20 h       0.00000733553413     -0.00000240688591     -0.00000396215268
+  *************************************************************************
+
+  norm of actual CARTESIAN gradient:  4.66508E-05
+  norm of actual INTERNAL  gradient:  5.30708E-05
+
+  ENERGY =    -382.3457535839 a.u.; # of cycle =    2
+
+  Approximate Hessian read from $hessapprox data section
+
+  Hessian updated according to BFGS formula
+  Number of zero Hessian eigenvalues:   0
+  Number of structures for GDIIS interpolation:    2
+  GDIIS step:     0.001544
+
+  Transforming internal coordinate displacements to Cartesian space
+      Iteration   1 residual norm     1.544139E-03
+      Iteration   2 residual norm     1.571540E-06
+      Iteration   3 residual norm     1.323987E-11
+      Transformation converged
+      Residual norm:    1.323987E-11 after    3 iterations
+
+      ****************************************************************** 
+                          CONVERGENCE INFORMATION
+
+                               Converged?     Value      Criterion
+             Energy change         yes      0.0000001   0.0000010
+             RMS of displacement   yes      0.0002101   0.0005000
+             RMS of gradient       yes      0.0000072   0.0005000
+             MAX displacement      yes      0.0008955   0.0010000
+             MAX gradient          yes      0.0000218   0.0010000
+      ****************************************************************** 
+
+
+    ------------------------------------------------------------------------
+         total  cpu-time :   0.02 seconds
+         total wall-time :   0.03 seconds
+    ------------------------------------------------------------------------
+
+
+   ****  statpt : all done  ****
+
+
+    2016-01-11 18:10:52.720 
+
+fine, there is no data group "$actual step"
+next step = dscf
+ operating system is UNIX !
+ hostname is         nodo05
+
+ dscf(nodo05) : TURBOMOLE V6.0 5 Feb 2009 at 14:39:24
+ Copyright (C) 2009 TURBOMOLE GmbH, Karlsruhe
+
+
+    2016-01-11 18:10:52.776 
+
+
+
+                             d s c f - program
+
+                   idea & directorship : reinhart ahlrichs
+                   program development : marco haeser
+                                         michael baer
+                           dft version : oliver treutler
+
+
+                          quantum chemistry group
+                          universitaet  karlsruhe
+                                  germany
+
+
+
+
+                          References             
+                                                 
+          TURBOMOLE:                             
+              R. Ahlrichs, M. Baer, M. Haeser, H. Horn, and
+              C. Koelmel
+              Electronic structure calculations on workstation
+              computers: the program system TURBOMOLE
+              Chem. Phys. Lett. 162: 165 (1989)
+          Density Functional:                              
+              O. Treutler and R. Ahlrichs                      
+              Efficient Molecular Numerical Integration Schemes
+              J. Chem. Phys. 102: 346 (1995)                   
+          Parallel Version:                                
+              Performance of parallel TURBOMOLE for Density    
+              Functional Calculations                          
+              M. v. Arnim and R. Ahlrichs                      
+              J. Comp. Chem. 19: 1746 (1998)                   
+                                         
+
+
+
+
+              +--------------------------------------------------+
+              | Atomic coordinate, charge and isotop information |
+              +--------------------------------------------------+
+
+
+              atomic coordinates              atom shells charge pseudo isotop
+    -2.69147901    0.00039541   -0.44729606    c      3    6.000    0     0
+    -1.69864585    0.00093344    2.06480488    c      3    6.000    0     0
+     0.92656181    0.00078196    2.49604570    c      3    6.000    0     0
+     2.69147902    0.00039499    0.44729604    c      3    6.000    0     0
+     1.69864590    0.00093313   -2.06480486    c      3    6.000    0     0
+    -3.00433051    0.00156244    3.69195936    h      1    1.000    0     0
+     1.65157701    0.00113027    4.45453096    h      1    1.000    0     0
+     3.00433055    0.00156133   -3.69195931    h      1    1.000    0     0
+     5.46155713   -0.00099100    1.01502842    c      3    6.000    0     0
+     7.37233621   -0.00049424   -0.68865898    c      3    6.000    0     0
+     7.04262586    0.00094954   -2.74524041    h      1    1.000    0     0
+     5.92875731   -0.00251371    3.05402134    h      1    1.000    0     0
+     9.36290191   -0.00154608   -0.07485281    h      1    1.000    0     0
+    -5.46155713   -0.00099102   -1.01502844    c      3    6.000    0     0
+    -5.92875731   -0.00251393   -3.05402136    h      1    1.000    0     0
+    -7.37233624   -0.00049440    0.68865898    c      3    6.000    0     0
+    -7.04262589    0.00094956    2.74524043    h      1    1.000    0     0
+    -9.36290195   -0.00154654    0.07485280    h      1    1.000    0     0
+    -0.92656175    0.00078239   -2.49604573    c      3    6.000    0     0
+    -1.65157700    0.00113122   -4.45453099    h      1    1.000    0     0
+ 
+
+     center of nuclear mass  :    0.00000001    0.00010891    0.00000000
+
+     center of nuclear charge:    0.00000001    0.00009526    0.00000000
+
+
+              +--------------------------------------------------+
+              |               basis set information              |
+              +--------------------------------------------------+
+
+
+              we will work with the  1s 3p 5d  7f  9g ... basis set
+              ...i.e. with spherical basis functions...
+
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    c       10     15      5   sto-3g hondo   [2s1p|6s3p]
+    h       10      3      1   sto-3g hondo   [1s|3s]
+   ---------------------------------------------------------------------------
+   total:   20    180     60
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :   12
+   total number of contracted shells         :   40
+   total number of cartesian basis functions :   60
+   total number of SCF-basis functions       :   60
+
+
+ integral neglect threshold       :  0.56E-09
+ integral storage threshold THIZE :  0.10E-04
+ integral storage threshold THIME :         5
+
+
+ symmetry group of the molecule :   c1 
+
+ the group has the following generators :
+   c1(z)
+
+    1 symmetry operations found
+
+ there are 1 real representations :   a   
+
+ maximum number of shells which are related by symmetry :  1
+
+
+    mo occupation :
+   irrep   mo's   occupied
+    a       60       35
+ 
+ number of basis functions   :           60
+ number of occupied orbitals :           35
+ 
+  
+           ------------------
+           density functional
+           ------------------
+ B-P86 functional
+ exchange:    LDA + Becke (B88)
+ correlation: LDA (VWN) + Perdew (P86)
+ iterations will be done with small grid
+  
+ spherical integration : Lebedev's spherical grid
+ spherical gridsize    :           3
+    i.e. gridpoints    :         302
+ value for diffuse not defined
+ radial integration    : Chebyshev 2nd kind (scaling 3)
+ radial gridsize       :           3
+ integration cells     :          20
+ partition function    : becke
+ partition sharpness   :           3
+  
+
+          ------------------------
+          nuclear repulsion energy  :   443.907969749    
+          ------------------------
+
+ 
+          -----------------
+          -S,T+V- integrals
+          -----------------
+
+ 1e-integrals will be neglected if expon. factor < 0.556994E-10
+ 
+   Difference densities algorithm switched on.
+   The maximal number of linear combinations of
+   difference densities is          20 .
+
+ automatic virtual orbital shift switched on 
+      shift if e(lumo)-e(homo) < 0.10000000    
+
+
+ DIIS switched on: error vector is FDS-SDF
+ Max. Iterations for DIIS is     :   4
+ DIIS matrix (see manual) 
+    Scaling factor of diagonals  :  1.200
+    threshold for scaling factor :  0.000
+
+ scf convergence criterion : increment of total energy < .1000000D-05
+                  and increment of one-electron energy < .1000000D-02
+
+  MOs are in ASCII format !
+
+
+ reading orbital data $scfmo  from file mos . 
+
+ orbital characterization : scfconv=6
+ 
+
+ DSCF restart information will be dumped onto file mos
+
+
+   disc space (kbyte) allocation for  1 2e-integral file(s) :
+   --------------------------------------------------------
+   twoint                                                 0
+   --------------------------------------------------------
+
+ maximum number of buffers which may be written onto 2e-file(s) =         0
+
+
+         0 2 e - integrals written in         0 blocks requiring       0 k-byte
+
+          Overall gridpoints after grid construction =         25920
+ 
+                                              current damping :  0.700
+ ITERATION  ENERGY          1e-ENERGY        2e-ENERGY     NORM[dD(SAO)]  TOL
+   1  -382.34543784892    -1396.8311114     570.57770379    0.000D+00 0.556D-09
+                            Exc =   -57.835555901644     N = 69.997502777    
+          max. resid. norm for Fia-block=  1.627D-04 for orbital     32a         
+          max. resid. fock norm         =  2.089D-04 for orbital     38a         
+          Delta Eig. =     0.0012047746 eV 
+ 
+                                              current damping :  0.700
+ ITERATION  ENERGY          1e-ENERGY        2e-ENERGY     NORM[dD(SAO)]  TOL
+   2  -382.34543829407    -1396.8307231     570.57731504    0.116D-02 0.352D-09
+                            Exc =   -57.835558150194     N = 69.997502777    
+          Norm of current diis error: 0.27053E-03
+          max. resid. norm for Fia-block=  7.024D-05 for orbital     32a         
+          max. resid. fock norm         =  9.377D-05 for orbital     38a         
+          Delta Eig. =     0.0018171061 eV 
+
+ ENERGY CONVERGED !
+
+          Overall gridpoints after grid construction =         96312
+ 
+                                              current damping :  0.750
+ ITERATION  ENERGY          1e-ENERGY        2e-ENERGY     NORM[dD(SAO)]  TOL
+   3  -382.34575346809    -1396.8318103     570.57808712    0.560D-03 0.281D-09
+                            Exc =   -57.835867889223     N = 69.999813466    
+          max. resid. norm for Fia-block=  6.481D-05 for orbital     33a         
+          max. resid. fock norm         =  6.987D-05 for orbital     38a         
+
+ convergence criteria satisfied after  3 iterations
+
+
+                  ------------------------------------------ 
+                 |  total energy      =   -382.34575346809  |
+                  ------------------------------------------ 
+                 :  kinetic energy    =    375.67489100246  :
+                 :  potential energy  =   -758.02064447056  :
+                 :  virial theorem    =      1.98255280095  :
+                 :  wavefunction norm =      1.00000000000  :
+                  .......................................... 
+
+
+ orbitals $scfmo  will be written to file mos
+
+    irrep                 31a         32a         33a         34a         35a   
+ eigenvalues H         -0.24560    -0.22624    -0.17737    -0.16527    -0.12668
+            eV          -6.6831     -6.1563     -4.8264     -4.4973     -3.4472
+ occupation              2.0000      2.0000      2.0000      2.0000      2.0000 
+
+    irrep                 36a         37a         38a         39a         40a   
+ eigenvalues H          0.00570     0.05482     0.06946     0.13753     0.21874
+            eV           0.1552      1.4917      1.8901      3.7423      5.9522
+ 
+ 
+ 
+ 
+ ==============================================================================
+                           electrostatic moments
+ ==============================================================================
+ 
+              nuc           elec       ->  total
+ ------------------------------------------------------------------------------
+                          charge      
+ ------------------------------------------------------------------------------
+          70.000000     -70.000000       0.000000
+ 
+ ------------------------------------------------------------------------------
+                       dipole moment  
+ ------------------------------------------------------------------------------
+   x       0.000000       0.000000       0.000000
+   y       0.006668      -0.006677      -0.000009
+   z       0.000000       0.000000       0.000000
+ 
+   | dipole moment | =     0.0000 a.u. =     0.0000 debye 
+ 
+ ------------------------------------------------------------------------------
+                     quadrupole moment
+ ------------------------------------------------------------------------------
+  xx    1510.347825   -1547.593132     -37.245307
+  yy       0.000061     -43.644250     -43.644189
+  zz     247.064061    -284.071560     -37.007499
+  xy      -0.000004       0.000004       0.000000
+  xz      -5.615312       5.650019       0.034707
+  yz      -0.000004       0.000004       0.000000
+ 
+     1/3  trace=     -39.298998
+     anisotropy=       6.521316
+ 
+ ==============================================================================
+ 
+ could not remove file twoint
+
+
+    ------------------------------------------------------------------------
+         total  cpu-time :   1.47 seconds
+         total wall-time :   1.49 seconds
+    ------------------------------------------------------------------------
+
+
+   ****  dscf : all done  ****
+
+
+    2016-01-11 18:10:54.267 
+
+fine, there is no data group "$actual step"
+next step = grad
+ energy change  : actual value =  -0.6430E-07 threshold =   0.1000E-05
+ geom. gradient : actual value =   0.2181E-04 threshold =   0.1000E-02
+
+CONVERGENCY CRITERIA FULFILLED IN CYCLE 2
+
+#CCLIB coord
+$coord
+   -2.69147900923021      0.00039541298532     -0.44729606354248  c
+   -1.69864585435472      0.00093343653799      2.06480487689466  c
+    0.92656180742075      0.00078195589050      2.49604569820948  c
+    2.69147902390000      0.00039499108476      0.44729604282779  c
+    1.69864589737411      0.00093312916528     -2.06480486435085  c
+   -3.00433051105069      0.00156243964206      3.69195935602626  h
+    1.65157701493251      0.00113027185168      4.45453096380184  h
+    3.00433055420211      0.00156133168691     -3.69195930876656  h
+    5.46155712651106     -0.00099099800790      1.01502842298613  c
+    7.37233620723211     -0.00049424222863     -0.68865898214347  c
+    7.04262585851608      0.00094954212261     -2.74524041268423  h
+    5.92875730866542     -0.00251370865865      3.05402134166232  h
+    9.36290190680331     -0.00154607688572     -0.07485280830557  h
+   -5.46155713206322     -0.00099102384304     -1.01502843807382  c
+   -5.92875730972301     -0.00251393074301     -3.05402136476858  h
+   -7.37233623580322     -0.00049440237652      0.68865898302814  c
+   -7.04262589003650      0.00094956362385      2.74524043212399  h
+   -9.36290195293602     -0.00154653824491      0.07485279773343  h
+   -0.92656175316625      0.00078239160181     -2.49604572909932  c
+   -1.65157699607751      0.00113122305656     -4.45453099379270  h
+$user-defined bonds
+$redundant
+     number_of_atoms            20
+     degrees_of_freedom         54
+     internal_coordinates       54
+     frozen_coordinates          0
+# definitions of redundant internals
+   1 k  1.0000000000000 stre   2    6           val=   2.08625
+   2 k  0.7071067811865 bend   3    6    2      val=  -0.13709
+       -0.7071067811865 bend   1    6    2
+   3 k  1.0000000000000 outp   6    1    3    2 val=  -0.00239
+   4 k  1.0000000000000 stre   3    7           val=   2.08838
+   5 k -0.7071067811865 bend   4    7    3      val=   0.35025
+        0.7071067811865 bend   2    7    3
+   6 k  1.0000000000000 outp   7    2    4    3 val=  -0.00455
+   7 k  1.0000000000000 stre   5    8           val=   2.08625
+   8 k -0.7071067811865 bend  19    8    5      val=   0.13709
+        0.7071067811865 bend   4    8    5
+   9 k  1.0000000000000 outp   8    4   19    5 val=  -0.00238
+  10 k  0.7071067811865 tors  13   10    9    4 val=  89.99697
+        0.7071067811865 tors  11   10    9    4
+  11 k  1.0000000000000 stre  10   13           val=   2.08305
+  12 k  1.0000000000000 stre  10   11           val=   2.08284
+  13 k -0.8111048921448 bend  11   13   10      val=   2.74216
+        0.4866797562338 bend   9   13   10
+        0.3244251359110 bend   9   11   10
+  14 k -0.0936777487206 bend  11   13   10      val=   1.04158
+       -0.6555985673710 bend   9   13   10
+        0.7492763160916 bend   9   11   10
+  15 k  1.0000000000000 outp  13    9   11   10 val=   0.00041
+  16 k  1.0000000000000 stre   9   12           val=   2.09183
+  17 k -0.7071067811865 bend  10   12    9      val=  -2.16360
+        0.7071067811865 bend   4   12    9
+  18 k  1.0000000000000 outp  12    4   10    9 val=  -0.00160
+  19 k  1.0000000000000 stre  14   15           val=   2.09183
+  20 k  0.7071067811865 bend  16   15   14      val=   2.16360
+       -0.7071067811865 bend   1   15   14
+  21 k  1.0000000000000 outp  15    1   16   14 val=  -0.00160
+  22 k  0.7071067811865 tors  18   16   14    1 val=  89.99697
+        0.7071067811865 tors  17   16   14    1
+  23 k  1.0000000000000 stre  16   18           val=   2.08305
+  24 k  1.0000000000000 stre  16   17           val=   2.08284
+  25 k  0.8111048921448 bend  17   18   16      val=  -2.74216
+       -0.4866797562338 bend  14   18   16
+       -0.3244251359110 bend  14   17   16
+  26 k -0.0936777487206 bend  17   18   16      val=   1.04158
+       -0.6555985673710 bend  14   18   16
+        0.7492763160916 bend  14   17   16
+  27 k  1.0000000000000 outp  18   14   17   16 val=   0.00041
+  28 k  1.0000000000000 stre  19   20           val=   2.08838
+  29 k -0.7071067811865 bend   1   20   19      val=   0.35025
+        0.7071067811865 bend   5   20   19
+  30 k  1.0000000000000 outp  20    5    1   19 val=  -0.00455
+  31 k  0.7071067811865 tors  10    9    4    3 val=  90.03401
+        0.7071067811865 tors  10    9    4    5
+  32 k  1.0000000000000 stre   9   10           val=   2.56001
+  33 k  1.0000000000000 bend   4   10    9      val= 126.69670
+  34 k  0.7071067811865 tors  16   14    1    2 val=  90.03401
+        0.7071067811865 tors  16   14    1   19
+  35 k  1.0000000000000 stre  14   16           val=   2.56001
+  36 k  1.0000000000000 bend   1   16   14      val= 126.69670
+  37 k  1.0000000000000 stre   4    9           val=   2.82766
+  38 k -0.7071067811865 bend   3    9    4      val=   1.99314
+        0.7071067811865 bend   5    9    4
+  39 k  1.0000000000000 outp   9    5    3    4 val=  -0.00907
+  40 k  1.0000000000000 stre   1   14           val=   2.82766
+  41 k -0.7071067811865 bend  19   14    1      val=   1.99314
+        0.7071067811865 bend   2   14    1
+  42 k  1.0000000000000 outp  14    2   19    1 val=  -0.00908
+  43 k  1.0000000000000 stre   1   19           val=   2.70413
+  44 k  1.0000000000000 stre  19    5           val=   2.66039
+  45 k  1.0000000000000 stre   5    4           val=   2.70118
+  46 k  1.0000000000000 stre   4    3           val=   2.70413
+  47 k  1.0000000000000 stre   3    2           val=   2.66039
+  48 k  1.0000000000000 stre   2    1           val=   2.70118
+  49 k -0.2886751345948 bend   1    5   19      val=  -1.73141
+       -0.2886751345948 bend  19    4    5
+        0.5773502691896 bend   5    3    4
+       -0.2886751345948 bend   4    2    3
+       -0.2886751345948 bend   3    1    2
+        0.5773502691896 bend   2   19    1
+  50 k  0.5000000000000 bend   1    5   19      val=   0.26072
+       -0.5000000000000 bend  19    4    5
+        0.5000000000000 bend   4    2    3
+       -0.5000000000000 bend   3    1    2
+  51 k -0.4082482904639 bend   1    5   19      val=   0.00000
+        0.4082482904639 bend  19    4    5
+       -0.4082482904639 bend   5    3    4
+        0.4082482904639 bend   4    2    3
+       -0.4082482904639 bend   3    1    2
+        0.4082482904639 bend   2   19    1
+  52 k -0.2886751345948 tors  19    5    4    3 val=   0.00568
+       -0.2886751345948 tors   5    4    3    2
+        0.5773502691896 tors   4    3    2    1
+       -0.2886751345948 tors   3    2    1   19
+       -0.2886751345948 tors   2    1   19    5
+        0.5773502691896 tors   1   19    5    4
+  53 k  0.5000000000000 tors  19    5    4    3 val=  -0.02213
+       -0.5000000000000 tors   5    4    3    2
+        0.5000000000000 tors   3    2    1   19
+       -0.5000000000000 tors   2    1   19    5
+  54 k -0.4082482904639 tors  19    5    4    3 val=  -0.00001
+        0.4082482904639 tors   5    4    3    2
+       -0.4082482904639 tors   4    3    2    1
+        0.4082482904639 tors   3    2    1   19
+       -0.4082482904639 tors   2    1   19    5
+        0.4082482904639 tors   1   19    5    4
+        54 non zero eigenvalues  of BmBt
+           1          11.454202309    1    0
+         1
+           2           7.198760306    2    0
+         2
+           3           5.805459421    3    0
+         3
+           4           5.234181203    4    0
+         4
+           5           4.554301415    5    0
+         5
+           6           4.448918250    6    0
+         6
+           7           4.216127401    7    0
+         7
+           8           4.035195578    8    0
+         8
+           9           3.961188004    9    0
+         9
+          10           3.856590628   10    0
+        10
+          11           3.713670798   11    0
+        11
+          12           3.543152771   12    0
+        12
+          13           3.387984780   13    0
+        13
+          14           3.228361306   14    0
+        14
+          15           3.099949539   15    0
+        15
+          16           2.684405302   16    0
+        16
+          17           2.427403641   17    0
+        17
+          18           2.308803057   18    0
+        18
+          19           2.207059278   19    0
+        19
+          20           2.053366556   20    0
+        20
+          21           1.914955017   21    0
+        21
+          22           1.666271490   22    0
+        22
+          23           1.564422369   23    0
+        23
+          24           1.437880820   24    0
+        24
+          25           1.383791140   25    0
+        25
+          26           1.104577826   26    0
+        26
+          27           1.101875137   27    0
+        27
+          28           1.013765331   28    0
+        28
+          29           0.898828565   29    0
+        29
+          30           0.898294751   30    0
+        30
+          31           0.581509575   31    0
+        31
+          32           0.580002138   32    0
+        32
+          33           0.535890106   33    0
+        33
+          34           0.391983040   34    0
+        34
+          35           0.372416258   35    0
+        35
+          36           0.362048266   36    0
+        36
+          37           0.355854650   37    0
+        37
+          38           0.353900110   38    0
+        38
+          39           0.342536681   39    0
+        39
+          40           0.333651441   40    0
+        40
+          41           0.286202112   41    0
+        41
+          42           0.272661712   42    0
+        42
+          43           0.254960180   43    0
+        43
+          44           0.189186661   44    0
+        44
+          45           0.170966250   45    0
+        45
+          46           0.116411596   46    0
+        46
+          47           0.103330448   47    0
+        47
+          48           0.099910965   48    0
+        48
+          49           0.084815561   49    0
+        49
+          50           0.069630278   50    0
+        50
+          51           0.063498573   51    0
+        51
+          52           0.024900042   52    0
+        52
+          53           0.013723613   53    0
+        53
+          54           0.011844718   54    0
+        54
+$end
+#CCLIB gradientt
+$grad          cartesian gradients
+  cycle =      4    SCF energy =     -382.3457535196   |dE/dxyz| =  0.000126
+   -2.69176330280845     -0.00007129445712     -0.44712612093731      c
+   -1.69851644615005     -0.00007332282157      2.06488947265450      c
+    0.92683848474542     -0.00007460039817      2.49592179180606      c
+    2.69176330586455     -0.00007127328394      0.44712611937145      c
+    1.69851645303760     -0.00007330575699     -2.06488946767951      c
+   -3.00422546200293     -0.00010960047578      3.69235577791663      h
+    1.65164862133480     -0.00009936461865      4.45456854624516      h
+    3.00422542223643     -0.00010955589055     -3.69235581183381      h
+    5.46170420514944     -0.00013117060482      1.01478224693634      c
+    7.37290032004562      0.00033137062990     -0.68855681172600      c
+    7.04373607561485      0.00092236676713     -2.74543890899796      h
+    5.92883353138302     -0.00065937735385      3.05381617961876      h
+    9.36352818730791      0.00017228422885     -0.07445320145663      h
+   -5.46170421520602     -0.00013118335616     -1.01478225163911      c
+   -5.92883353255742     -0.00065944101276     -3.05381618858498      h
+   -7.37290032230228      0.00033139055928      0.68855681267024      c
+   -7.04373605585274      0.00092243787879      2.74543890990978      h
+   -9.36352819434217      0.00017228707094      0.07445321997922      h
+   -0.92683848797451     -0.00007460625018     -2.49592178685491      c
+   -1.65164852640697     -0.00009927259342     -4.45456857763148      h
+  -.37568361530113D-04  -.83807802905817D-06  -.64043157574931D-05
+  0.18642824120479D-04  -.75176936802408D-06  -.11018291083756D-04
+  0.26828032412817D-04  0.82841059580554D-06  -.14713418055852D-04
+  0.37574595019251D-04  -.83623175278832D-06  0.64073990288044D-05
+  -.18641770850013D-04  -.75241509454071D-06  0.11014798135081D-04
+  -.20216122564526D-04  -.13411135966263D-06  0.23480940419735D-04
+  -.85981526200104D-05  0.96639263484632D-08  0.13291212991805D-04
+  0.20216542784996D-04  -.13418291333334D-06  -.23485420445025D-04
+  -.41760710734915D-04  0.29746248478164D-05  -.83490242347597D-05
+  -.50338010193861D-05  -.13199990681795D-05  0.26307626044674D-04
+  0.42383281727122D-05  0.11962174986759D-05  -.29310785373389D-04
+  0.67489870957013D-05  -.12154173229641D-05  -.11680191525657D-05
+  0.19808507745109D-04  -.75405289713127D-06  -.79940438913423D-05
+  0.41756930725679D-04  0.29760813587914D-05  0.83524628441646D-05
+  -.67486678573498D-05  -.12157370409335D-05  0.11687078717404D-05
+  0.50360876973548D-05  -.13203708074019D-05  -.26311052394901D-04
+  -.42382053861841D-05  0.11964105495651D-05  0.29308597712834D-04
+  -.19805872771918D-04  -.75424901084553D-06  0.79950873378374D-05
+  -.26844547110560D-04  0.82464077624298D-06  0.14719704416285D-04
+  0.86053676451283D-05  0.12265578208131D-07  -.13292174748684D-04
+  cycle =      5    SCF energy =     -382.3457535839   |dE/dxyz| =  0.000047
+   -2.69168259939389     -0.00015751689519     -0.44717768569127      c
+   -1.69855372815169     -0.00022105618999      2.06486160019718      c
+    0.92675746213371     -0.00024108964000      2.49595745165665      c
+    2.69168260619519     -0.00015750193114      0.44717767913013      c
+    1.69855374735988     -0.00022097341835     -2.06486159115470      c
+   -3.00425808912507     -0.00027743452806      3.69223504382450      h
+    1.65161350243780     -0.00034510622351      4.45456251095106      h
+    3.00425807359425     -0.00027720449247     -3.69223505239496      h
+    5.46166053506207      0.00006164482281      1.01485388008154      c
+    7.37273532205773      0.00036035301966     -0.68858763811692      c
+    7.04341555898525      0.00045205605716     -2.74538331541603      h
+    5.92881673515561      0.00003427804799      3.05387537460434      h
+    9.36334690952699      0.00054111786120     -0.07457701712434      h
+   -5.46166054526170      0.00006167580025     -1.01485388808074      c
+   -5.92881673679745      0.00003435316017     -3.05387538868277      h
+   -7.37273533477910      0.00036038184490      0.68858763857827      c
+   -7.04341555713367      0.00045205104642      2.74538332229090      h
+   -9.36334693138330      0.00054118619444      0.07457702610741      h
+   -0.92675744690888     -0.00024110059243     -2.49595745677936      c
+   -1.65161342245762     -0.00034534568292     -4.45456254421443      h
+  -.11193119791546D-04  -.22464698927445D-05  0.15130116792245D-05
+  0.74110189505408D-05  0.35339119033697D-06  0.26523812185434D-05
+  0.12129076951516D-04  -.83988052605633D-07  -.76973294358929D-05
+  0.11194291077799D-04  -.22527839063951D-05  -.15128237636197D-05
+  -.74053795991056D-05  0.35816295677154D-06  -.26501554885679D-05
+  -.21167908561139D-05  -.99140737717586D-06  0.15176360884708D-05
+  -.73318024929432D-05  -.23985986865119D-05  0.39598608401141D-05
+  0.21145430323237D-05  -.98686601938004D-06  -.15178441103888D-05
+  -.16594843471632D-04  0.55802734794904D-05  -.41099834184144D-05
+  -.34195866752040D-05  -.33573649868285D-05  0.68319127663411D-05
+  0.41383213375417D-05  -.25546583953850D-05  -.63207829434329D-05
+  0.55763704585681D-05  0.37961805553792D-05  -.17553395749968D-05
+  0.29637375679251D-05  0.18946646369271D-05  -.92950256695726D-05
+  0.16593145202015D-04  0.55836424003722D-05  0.41089630986208D-05
+  -.55761484660362D-05  0.37968029044747D-05  0.17545599671613D-05
+  0.34184186525824D-05  -.33584300191819D-05  -.68320736590369D-05
+  -.41378633106085D-05  -.25550137131167D-05  0.63222352152719D-05
+  -.29648337768860D-05  0.18948098453569D-05  0.92948979666167D-05
+  -.12134102853679D-04  -.82215846479599D-07  0.76980455109750D-05
+  0.73355341254826D-05  -.24068859127638D-05  -.39621526815646D-05
+$end
+#CCLIB mos
+$scfmo    scfconv=6   format(4d20.14)                                           
+# SCF total energy is     -382.3457534681 a.u.
+#
+     1  a      eigenvalue=-.97460889379569D+01   nsaos=60                       
+0.69889633309203D+000.32411147803855D-010.87695311974436D-03-.32628394934991D-06
+0.19768797572431D-04-.23827159343398D-01-.81722642341626D-020.13623492210607D-02
+0.78427845908282D-060.43671568529298D-020.23060058323881D-010.81734603648278D-02
+0.27231394964444D-02-.51989469883130D-06-.36973248123567D-02-.69862878744077D+00
+-.32398831843672D-010.87672360492265D-030.32551692838983D-060.19782624118733D-04
+0.23818282947795D-010.81695096615333D-020.13616315619684D-02-.78404158749029D-06
+0.43655392046418D-020.39078449453955D-03-.38972796430632D-03-.39067951205225D-03
+0.29087400128365D-010.70771414625846D-02-.41706052602808D-020.16868295238994D-05
+-.96184452828619D-03-.39677758206217D-03-.51501452890925D-030.31064709093525D-03
+-.42879365350047D-07-.12007577593834D-050.15349946653590D-03-.36053887004717D-03
+0.31740724222954D-04-.29098636074630D-01-.70798747057345D-02-.41722161128527D-02
+-.16879945206741D-05-.96221561230629D-030.36068106277496D-030.39693234671246D-03
+0.51521231465535D-030.31076847437053D-030.42918813868488D-07-.12012933926752D-05
+-.15355493410743D-03-.31752481883567D-04-.23068727170150D-01-.81762234905016D-02
+0.27243516461849D-020.52028994018543D-06-.36986394313002D-020.38983114662882D-03
+     2  a      eigenvalue=-.97460465082606D+01   nsaos=60                       
+0.69868216374897D+000.32165228315094D-010.59927504944795D-03-.30242765022877D-06
+-.36246419813956D-04-.23200121987765D-01-.71944522148037D-020.18745662139432D-02
+0.78734512925218D-060.42246853789996D-02-.22693538670262D-01-.72212170330626D-02
+-.31667556990348D-020.58517321438320D-060.34346845363552D-020.69894968460929D+00
+0.32177635646120D-01-.59961074973107D-03-.30188627235513D-060.36238886190821D-04
+-.23209252680076D-01-.71975813992996D-02-.18750875139236D-020.78784011457851D-06
+-.42263571165775D-020.27438140595763D-030.27005482849893D-030.27453112095148D-03
+-.29425200341948D-01-.71441297640274D-020.42082915979770D-02-.17209350071041D-05
+0.96961323038722D-030.40524437282422D-030.51759027179958D-03-.31750326748793D-03
+0.45776235920199D-070.17385840124838D-05-.14494733076278D-030.37219086859613D-03
+-.30747850683801D-04-.29414034979744D-01-.71414183654852D-02-.42066945614407D-02
+-.17207980156525D-05-.96924484838411D-030.37205253743506D-030.40509209429648D-03
+0.51739272636829D-030.31738416389482D-030.45782818202904D-07-.17379962005047D-05
+-.14488853653507D-03-.30735684524710D-04-.22684689395663D-01-.72180860757299D-02
+0.31657129916373D-020.58499216122360D-06-.34332686363356D-020.26990540901919D-03
+     3  a      eigenvalue=-.97330939596319D+01   nsaos=60                       
+0.29312778876943D-01-.41769489102191D-020.44013682073769D-020.16508182545337D-05
+0.73486785815419D-03-.14253758542967D-01-.81474318676680D-03-.12687929696713D-03
+0.51154744141601D-070.14791117976782D-030.13823576207241D-010.85281834621719D-03
+-.56320568190824D-040.56472049107934D-07-.15460630846214D-03-.29198816997526D-01
+0.41609067572903D-020.43846781775554D-02-.16439653830877D-050.73210528927534D-03
+0.14202459709748D-010.81258925323834D-03-.12685654157035D-03-.50968937508847D-07
+0.14702926489355D-030.41112500884866D-05-.13322849203666D-03-.42318955142655D-05
+-.69798718817418D+00-.31483348146003D-01-.10635310731458D-02-.20964769273545D-06
+0.75955708508711D-030.13659565546608D-010.80306891399720D-02-.36105952291320D-02
+-.84688961649564D-060.31634258692681D-02-.24587277674841D-030.66377286716352D-02
+-.27658723019535D-030.70067606474630D+000.31604576896709D-01-.10676689013550D-02
+0.21040419136484D-060.76247495227066D-03-.66632936707476D-02-.13712188340023D-01
+-.80616261723593D-02-.36244998503794D-020.84993639395227D-060.31756140285494D-02
+0.24682598375835D-030.27765366092690D-03-.13876472214321D-01-.85530063422476D-03
+-.56010338447618D-04-.56792955200524D-07-.15537979958584D-030.13364873348453D-03
+     4  a      eigenvalue=-.97330928354285D+01   nsaos=60                       
+0.29590857014690D-01-.41641094463175D-020.43323859169922D-020.16432658765354D-05
+0.71692801297785D-03-.13294084550896D-01-.55769543392701D-03-.55806413360309D-05
+0.45089506662093D-070.22912813432454D-03-.13792707440613D-01-.64790264337199D-03
+-.80472373832526D-04-.82770254863778D-070.20153681159494D-030.29703371866689D-01
+-.41801379230542D-02-.43492765176665D-020.16490688504839D-05-.71974787473140D-03
+-.13348730491046D-01-.56082140382220D-030.60682559435570D-050.45283880900291D-07
+-.22969526741120D-03-.31583561808950D-040.10964010398609D-03-.31568081813041D-04
+0.70068117117487D+000.31590435608855D-010.10782873365960D-020.20484747935314D-06
+-.76036829762547D-03-.13711039340698D-01-.80617095179469D-020.36233462973056D-02
+0.85065869728209D-06-.31760587220170D-020.24838093355654D-03-.66618706974442D-02
+0.27788260610387D-030.69799231418338D+000.31469152358864D-01-.10741900254892D-02
+0.20400693804558D-060.75744223883365D-03-.66363001407664D-02-.13658425001750D-01
+-.80307729624326D-02-.36094371781449D-020.84717994411476D-060.31638722228348D-02
+0.24743378201530D-030.27681715674875D-03-.13739461386567D-01-.64461944941099D-03
+0.80687796080934D-04-.82558898787713D-07-.20094081912562D-030.10912710792974D-03
+     5  a      eigenvalue=-.97323289510185D+01   nsaos=60                       
+0.78380053419808D-02-.16135215444499D-020.23390346231805D-03-.33179195497527D-06
+-.54341428049234D-020.58993702484422D+000.30198983423429D-010.30379673185586D-02
+-.13783625796783D-060.34347056571482D-04-.37682544284034D+00-.22698118923089D-01
+0.40796956042779D-02-.32315212545117D-060.10436790449109D-020.78147147663445D-02
+-.16081754424436D-02-.23593753899385D-03-.33132157017718D-060.54328290191987D-02
+0.58952816017774D+000.30178185170058D-01-.30358847242784D-02-.13742665148501D-06
+-.34450578995417D-04-.56475312142461D-020.36266457829664D-02-.56436272392568D-02
+0.34883272852840D-020.13851301180650D-030.74550301034430D-04-.12757010710327D-07
+-.13843712886396D-03-.37877478912038D-03-.11493232718552D-030.40735519117263D-04
+0.24439792926088D-080.13914639884951D-040.16828519872903D-03-.56142647021413D-04
+-.40377960658173D-050.35005085630130D-020.13910717270513D-03-.74613383013288D-04
+-.12727214744718D-070.13847624144304D-03-.56290644964494D-04-.37948217850288D-03
+-.11515551049850D-03-.40846533533854D-040.24752982860760D-08-.13883764149426D-04
+0.16839880807108D-03-.40419619168171D-05-.37658940732652D+00-.22683454266376D-01
+-.40767736375858D-02-.32190540572387D-06-.10429391629436D-020.36243226418597D-02
+     6  a      eigenvalue=-.97323203358007D+01   nsaos=60                       
+0.34548475137568D-01-.79335256255011D-02-.30291695253787D-02-.88951020105281D-06
+-.18926020406821D-020.60145757984699D+000.30675159870578D-010.31174171241473D-02
+-.13082247326189D-06-.14377647927905D-03-.35534314676237D+00-.21939567872129D-01
+0.43055620378801D-02-.27222123831345D-060.10983637096998D-02-.34553568922989D-01
+0.79345674484845D-02-.30289911109621D-020.88986226245139D-06-.18962766068270D-02
+-.60185363183719D+00-.30695484195258D-010.31194901173956D-020.13054175709406D-06
+-.14374904727833D-03-.57453731787981D-020.34934049942904D-020.57491651079037D-02
+-.17951469751588D-01-.87627013553930D-03-.93463525089898D-04-.62745936642942D-07
+0.57527975344205D-040.10447967814982D-020.32951961249488D-03-.16395272437905D-03
+0.11846219153673D-080.45631838593737D-04-.16747519429919D-030.21862262719881D-03
+0.61249093425392D-050.17949273525844D-010.87618360856633D-03-.93414405671336D-04
+0.62811595233382D-070.57434521493210D-04-.21858677296336D-03-.10445492127446D-02
+-.32944455606394D-03-.16392660543503D-03-.11800621005944D-080.45641855253541D-04
+0.16736198451508D-03-.61222118769664D-050.35560127615099D+000.21955037486721D-01
+0.43083045933613D-020.27127975314894D-060.10990681501457D-02-.34958886213200D-02
+     7  a      eigenvalue=-.97313704790914D+01   nsaos=60                       
+0.82959599640294D-02-.20401132107390D-02-.17110595537215D-02-.99930800775790D-07
+0.50326080285884D-02-.35726821352183D+00-.10262319071349D-010.35488503538861D-02
+-.18763236669500D-060.94730761269837D-03-.60275793613236D+00-.23755618306422D-01
+-.18383301545672D-02-.78568166768951D-070.32984670735220D-03-.82958493076684D-02
+0.20400867735453D-02-.17110543077949D-020.99847465580618D-070.50326437490484D-02
+0.35727299868187D+000.10262547627489D-010.35488369335820D-020.18662784088069D-06
+0.94730890778055D-030.31809982607723D-020.55362035345790D-02-.31810440130785D-02
+-.43660943302806D-02-.22884440179580D-03-.29035235551948D-04-.22331405741905D-07
+-.25366308076569D-04-.20371876100596D-040.53896463816893D-04-.24985667000315D-04
+-.14646595654514D-070.50668301212333D-040.72381533554118D-040.70957964636324D-04
+-.93696509144914D-050.43661295466768D-020.22884585470902D-03-.29036051810700D-04
+0.22348940381354D-07-.25365408484733D-04-.70958643474104D-040.20367214579909D-04
+-.53897633271004D-04-.24986200103228D-040.14624212062112D-070.50668211587752D-04
+-.72380225228027D-040.93695944409179D-050.60275659287627D+000.23755511051425D-01
+-.18383620232842D-020.78800065901502D-070.32983946871191D-03-.55361903470631D-02
+     8  a      eigenvalue=-.97312331967978D+01   nsaos=60                       
+0.33905521939591D-01-.73402476765226D-02-.32397720748873D-02-.78897446169274D-06
+0.64062633335124D-030.37678109971689D+000.11187708191019D-01-.34728970550124D-02
+0.14919677617637D-06-.66097098507880D-030.58979545563120D+000.22803175351190D-01
+0.19978390679772D-020.40914685492613D-070.80519735362708D-040.33905771957418D-01
+-.73403002508251D-020.32397944235904D-02-.78907964189210D-06-.64062496722522D-03
+0.37678408760327D+000.11187877007244D-010.34728704329012D-020.14821043698126D-06
+0.66096988682780D-03-.35469528259850D-02-.55764349641593D-02-.35469819212448D-02
+0.17446567813649D-010.73757054629548D-030.20872287810439D-03-.32642560863798D-07
+0.62865658001949D-06-.11895571908585D-02-.32543041930086D-030.18553860226693D-03
+0.10333918320881D-07-.60230972397249D-040.80019671608506D-04-.25691103144985D-03
+-.92254023679597D-050.17446464490177D-010.73756555491853D-03-.20872214186354D-03
+-.32645964294399D-07-.62893271264254D-06-.25690968741898D-03-.11895514971972D-02
+-.32542846845985D-03-.18553761769025D-030.10329663701686D-070.60230658942326D-04
+0.80018790940371D-04-.92253713399096D-050.58979201275046D+000.22802990519744D-01
+-.19978619940073D-020.41224322549023D-07-.80527159913459D-04-.55764018696867D-02
+     9  a      eigenvalue=-.97168913378854D+01   nsaos=60                       
+0.26885413010502D-030.13911460963851D-03-.24952188423958D-040.20320810461316D-07
+0.59782661164297D-040.81186033320917D-03-.31169180284940D-040.11952475808855D-03
+0.17692667576771D-070.86402019787695D-05-.13345917350075D-03-.11935123137292D-04
+0.72470230351724D-04-.35107891600772D-07-.11380189253404D-05-.16525764015868D-03
+-.87914732450669D-04-.15973292133832D-04-.12137545086606D-070.36912271823595D-04
+-.48413115328485D-030.11384576678482D-040.81651735842129D-04-.15175483365615D-07
+0.65449744894557D-050.12973422695034D-030.89158846479164D-05-.81539607199804D-04
+-.11053028137283D-010.51188365278716D-020.26621616125839D-020.67126422240021D-06
+-.24112295494568D-02-.52666242757998D+00-.23675348612290D-010.66838739093115D-03
+0.21046221816234D-06-.64773954104448D-030.49534403023563D-020.27051423103340D-05
+0.49685833744372D-020.17602507179718D-01-.81507415481466D-020.42387857292245D-02
+-.10687703652242D-05-.38392957100896D-02-.44900757731071D-050.83861403373123D+00
+0.37698575019849D-010.10641549621546D-02-.33501871895580D-06-.10313703659853D-02
+-.78875253519865D-02-.79115850201399D-020.38295098576527D-03-.12493505338933D-04
+0.85625305468839D-040.49544956204676D-07-.76917689775288D-05-.17343202359453D-04
+    10  a      eigenvalue=-.97168913277174D+01   nsaos=60                       
+0.17710306561176D-030.86102923059895D-04-.14972895665173D-040.14201491545302D-07
+0.38999910523265D-040.56910323477736D-03-.38432731729455D-040.59893467968863D-04
+0.17925470196897D-080.28501188930868D-050.60495489251266D-03-.53520564534000D-04
+-.46848624054920D-040.41264962585861D-070.15350215333387D-040.27629310162879D-03
+0.13797688019472D-030.24323994555804D-040.21622115323059D-07-.61093695367693D-04
+0.86522418511264D-03-.48155829293913D-04-.10586025377544D-030.93133173814576D-08
+-.63197768315045D-050.81326445117231D-04-.21441300966798D-040.12960036385338D-03
+0.17605834609726D-01-.81506446737599D-02-.42384955533983D-02-.10692060964220D-05
+0.38391015177524D-020.83861380340253D+000.37698426004952D-01-.10639852005237D-02
+-.33499806621910D-060.10313222088704D-02-.78876191445654D-02-.47277594717933D-05
+-.79116099099218D-020.11058343833474D-01-.51186809508036D-020.26616994457721D-02
+-.67141742742282D-06-.24109202209334D-02-.30837978103981D-050.52666206056600D+00
+0.23675110135178D-010.66811686807589D-03-.21031848126493D-06-.64766264137497D-03
+-.49535894012894D-02-.49686227292994D-020.48696045889539D-03-.53392974465372D-04
+0.10725400317396D-040.21937546961737D-07-.13332697658837D-04-.15441368667199D-04
+    11  a      eigenvalue=-.73209408445711D+00   nsaos=60                       
+-.10799257202062D+000.27608365344232D+000.40471738050219D-010.36091315986951D-05
+0.54377992333283D-02-.97382103732968D-010.24719652344492D+000.31484533209551D-01
+-.87383388921539D-05-.45993335598053D-01-.97675305360584D-010.24756579073296D+00
+-.14414499754639D-01-.24549406003764D-05-.53245709933432D-01-.10799257026349D+00
+0.27608364399590D+00-.40471738787430D-010.36174568446842D-05-.54377985780725D-02
+-.97382102409476D-010.24719651718380D+00-.31484533146902D-01-.87328734841307D-05
+0.45993334759148D-010.44964344249711D-010.44834613711070D-010.44964343934690D-01
+-.50106533425580D-010.12946104094836D+00-.29595301130805D-010.14950475514621D-04
+-.12383471157478D-01-.24332026087197D-010.62106414427685D-01-.20187638115000D-01
+-.18753404241812D-050.11847596653014D-010.13993845901660D-010.25809716760530D-01
+0.10425543878057D-01-.50106534624351D-010.12946104494946D+000.29595301760545D-01
+0.14954128195937D-040.12383471385849D-010.25809717492854D-01-.24332026607552D-01
+0.62106416487017D-010.20187638475303D-01-.18740001159278D-05-.11847596820210D-01
+0.13993846165000D-010.10425544108092D-01-.97675304873330D-010.24756579107066D+00
+0.14414497711351D-01-.24658433462203D-050.53245710684930D-010.44834613389033D-01
+    12  a      eigenvalue=-.68052967067357D+00   nsaos=60                       
+0.10502193248542D+00-.27869729339662D+000.34264885183191D-010.14794000852499D-04
+0.49296032348482D-020.43080839072324D-01-.11376134849730D+000.47078697287887D-01
+0.69132686959255D-050.44150646153570D-01-.39478353200545D-010.10379652189799D+00
+0.59449295393315D-01-.64444174713673D-05-.26598902534315D-01-.10502193316891D+00
+0.27869729025837D+000.34264880826122D-01-.14785027501692D-040.49296029581221D-02
+-.43080842469542D-010.11376135598365D+000.47078695053300D-01-.69206629322525D-05
+0.44150647316565D-01-.30696830925100D-010.27130142308741D-010.30696832785981D-01
+-.11360719750321D+000.29792100958694D+00-.11955455917471D-010.21547358221988D-04
+-.32073343208054D-01-.78821307379022D-010.20545095139878D+00-.48522610680306D-01
+-.80770816764088D-050.35448451610839D-010.47322146116915D-010.66676784326407D-01
+0.42408814712367D-010.11360719978866D+00-.29792101798986D+00-.11955455713872D-01
+-.21550655314891D-04-.32073343625974D-01-.66676786033868D-010.78821309408522D-01
+-.20545095926714D+00-.48522611419123D-010.80739634739958D-050.35448452082036D-01
+-.47322147337502D-01-.42408815885455D-010.39478349668510D-01-.10379651345934D+00
+0.59449297190748D-010.64403332853247D-05-.26598900493412D-01-.27130140784443D-01
+    13  a      eigenvalue=-.64590627789869D+00   nsaos=60                       
+-.58140839199081D-020.18282755157178D-01-.98124425257029D-01-.29538509184687D-04
+-.10787953287239D-010.42376544929907D-01-.11122886176658D+00-.48766032461528D-01
+-.24378506648612D-050.20226177204370D-020.46835994447709D-01-.12338649353178D+00
+0.38455985041844D-01-.56925546656698D-050.16328712175117D-01-.58140884177782D-02
+0.18282767199025D-010.98124424448093D-01-.29533455989213D-040.10787950055280D-01
+0.42376538384231D-01-.11122884289578D+000.48766033327635D-01-.24435461974034D-05
+-.20226156341447D-02-.16694780480002D-01-.23375572245025D-01-.16694775895348D-01
+-.11942952689127D+000.31700590709746D+000.54422739018916D-010.93667466148144D-05
+-.42968093534190D-01-.11659454182734D+000.30950861361923D+00-.50893302981255D-01
+-.14090752035738D-040.47290188136826D-010.73373713383392D-010.76426691871220D-01
+0.74135105127973D-01-.11942952484456D+000.31700590442477D+00-.54422739844109D-01
+0.93637702781961D-050.42968092441491D-010.76426691182190D-01-.11659454156607D+00
+0.30950861692649D+000.50893301743678D-01-.14087943728985D-04-.47290187124752D-01
+0.73373713366327D-010.74135105186822D-010.46835993383627D-01-.12338649130155D+00
+-.38455978862496D-01-.56854012885446D-05-.16328714489664D-01-.23375571347634D-01
+    14  a      eigenvalue=-.62990815736980D+00   nsaos=60                       
+0.11743582210811D-01-.31963859926075D-01-.21840997368252D-010.31455230396107D-05
+0.12324349211853D+00-.12068996438431D+000.32718764062981D+000.63701751031753D-01
+-.10023119178785D-060.35277874119000D-01-.13197302376288D+000.35797255219958D+00
+-.55699266693217D-010.49075974557978D-050.61272380508426D-02-.11743580462923D-01
+0.31963854757106D-01-.21840993982081D-01-.31475351022419D-050.12324349168718D+00
+0.12068996459818D+00-.32718763742813D+000.63701751509578D-010.90470054273234D-07
+0.35277874117745D-010.89758513361751D-010.97446199142632D-01-.89758513624662D-01
+-.43936287888943D-030.18893197255323D-02-.18321895108864D-01-.17288816183160D-05
+0.23914174956560D-010.14506683035655D-01-.38137097319551D-010.63488825884001D-02
+-.10563397071653D-050.19741778620615D-02-.14892579658313D-010.10248005165302D-01
+-.89095440506817D-020.43936001746317D-03-.18893121047951D-02-.18321897524475D-01
+0.17275066962091D-050.23914176115149D-01-.10248003245343D-01-.14506686627944D-01
+0.38137107542526D-010.63488836931803D-020.10568754796253D-050.19741765254087D-02
+0.14892582049128D-010.89095465668606D-020.13197302608559D+00-.35797256045286D+00
+-.55699264826029D-01-.48932910212176D-050.61272346803778D-02-.97446199785620D-01
+    15  a      eigenvalue=-.59894839649290D+00   nsaos=60                       
+-.98178837443424D-010.27150459648935D+000.55168957216794D-010.17096259874921D-04
+0.16141547999202D-01-.72054370384574D-010.20010090653032D+00-.45473276665611D-01
+-.38406700476969D-05-.52042886357045D-010.40534782393141D-01-.11281343122610D+00
+-.89249627041237D-010.56808559493314D-050.36296514470842D-010.98178836222391D-01
+-.27150458791660D+000.55168962345347D-01-.17095000116702D-040.16141548574919D-01
+0.72054373112267D-01-.20010091143558D+00-.45473272189708D-010.38538670271570D-05
+-.52042886246572D-010.51505338968897D-01-.31896891384393D-01-.51505340356000D-01
+-.52046920804445D-010.13902197293243D+000.12839567437285D+00-.13559629943776D-04
+-.38186010962589D-01-.11217563463685D+000.30708936440945D+00-.14538084548758D-01
+-.15517049402685D-040.33628171939400D-010.78450570178682D-010.37599912232164D-01
+0.91177246724292D-010.52046916913487D-01-.13902196369218D+000.12839567422677D+00
+0.13571662404847D-04-.38186010567810D-01-.37599909371335D-010.11217563367634D+00
+-.30708936578408D+00-.14538082839643D-010.15517480525568D-040.33628169617885D-01
+-.78450570404717D-01-.91177246277415D-01-.40534778943347D-010.11281342268729D+00
+-.89249630952359D-01-.56688984246253D-050.36296512452052D-010.31896890012534D-01
+    16  a      eigenvalue=-.52873873032583D+00   nsaos=60                       
+0.71534198182489D-01-.20880606316171D+000.73805209527699D-010.44970733257006D-04
+0.11808492710092D+00-.80902233664161D-010.23205504597837D+000.24755080821397D-01
+0.19942833967630D-040.64516406501960D-010.13389921603320D-02-.52492956711205D-02
+-.15702013116834D+000.26081124822958D-040.28617471380119D-010.71534200273825D-01
+-.20880606551893D+00-.73805200657627D-010.44964958421455D-04-.11808492709899D+00
+-.80902230867830D-010.23205503491052D+00-.24755085312142D-010.19939529419220D-04
+-.64516410112585D-010.10274006788408D+00-.17499073897583D-010.10274006512361D+00
+0.52739548905169D-01-.15926231395562D+000.13107956872440D+000.16575033325999D-05
+-.80598927916300D-01-.86339361721136D-010.25072168687813D+000.38700746425299D-01
+0.61190831442806D-05-.34319797432846D-010.10373998685140D+00-.77613567660645D-01
+0.98890454623287D-010.52739553227649D-01-.15926232764131D+00-.13107956914706D+00
+0.16453106157028D-050.80598930114897D-01-.77613573104457D-01-.86339363743730D-01
+0.25072169607671D+00-.38700749576271D-010.61162252731122D-050.34319801406677D-01
+0.10373999100277D+000.98890457567477D-010.13389861410202D-02-.52492789428790D-02
+0.15702012768439D+000.26060535263333D-04-.28617468327805D-01-.17499069575642D-01
+    17  a      eigenvalue=-.50002926783972D+00   nsaos=60                       
+0.53570639815976D-01-.15939033488678D+000.62233668432038D-010.60678185562166D-05
+-.18525779919545D+000.58943249605047D-01-.17629737683587D+000.16841372297973D+00
+0.88591334997209D-050.84189775598871D-01-.11091589774305D+000.32985975543454D+00
+0.39768321880387D-010.10891369670035D-040.81878753954410D-010.53570641284193D-01
+-.15939033587894D+00-.62233659263986D-010.60614027271604D-050.18525779918365D+00
+0.58943253178313D-01-.17629738424531D+00-.16841372346975D+000.88979504219297D-05
+-.84189777460162D-01-.83841025932834D-010.16780478557304D+00-.83841029784700D-01
+0.63389484516743D-02-.20704798585038D-010.75241322317458D-01-.29761279273153D-04
+0.51208766610679D-01-.37015528585394D-010.11204374161290D+000.49384154559718D-01
+-.17052187745392D-040.15558749911820D-010.20712951479618D-010.34938711834652D-01
+0.65835770374346D-010.63389535190373D-02-.20704813957517D-01-.75241324314405D-01
+-.29770915075494D-04-.51208762195917D-010.34938704679129D-01-.37015531746650D-01
+0.11204375240763D+00-.49384158133724D-01-.17058247722418D-04-.15558744422344D-01
+0.20712957873455D-010.65835774797514D-01-.11091590117718D+000.32985976785192D+00
+-.39768328015773D-010.10907249180418D-04-.81878752104519D-010.16780478919507D+00
+    18  a      eigenvalue=-.47485880426781D+00   nsaos=60                       
+-.13930951352312D-010.40318178094869D-010.13565956487019D+000.75605823665413D-04
+0.55168181055656D-01-.31420642787130D-010.96001005604918D-01-.78239292094241D-01
+0.95572587836859D-05-.36965265372291D-010.52180377369213D-01-.16020765738899D+00
+-.53340611340374D-02-.17944806929559D-040.53412739994161D-020.13930939625032D-01
+-.40318141690046D-010.13565955708941D+00-.75583970412462D-040.55168179118863D-01
+0.31420649104769D-01-.96001023264564D-01-.78239280342552D-01-.95269949620221D-05
+-.36965239925186D-010.55449414013923D-01-.50963222188191D-01-.55449428422487D-01
+-.99570570391427D-010.30696254639386D+00-.41598276342522D-01-.56172275190092D-04
+0.11460440112175D+000.80981964405202D-01-.25188776058762D+00-.90286572051441D-01
+-.43820215199383D-040.12080167397912D+00-.15758612266794D+000.16724563079115D+00
+-.12270848588592D+000.99570574579285D-01-.30696256108965D+00-.41598266093262D-01
+0.56174508656417D-040.11460440762546D+00-.16724564172931D+00-.80981965199189D-01
+0.25188776610176D+00-.90286575341926D-010.43817297055417D-040.12080168245546D+00
+0.15758612817517D+000.12270848727577D+00-.52180371418136D-010.16020763996410D+00
+-.53340805962727D-020.17960165662451D-040.53412951988920D-020.50963207508092D-01
+    19  a      eigenvalue=-.45466398789459D+00   nsaos=60                       
+0.54845709757791D-01-.16438012625011D+00-.14421192232738D+00-.36905590607376D-04
+0.18783656062267D-01-.53232187536021D-010.17049973590809D+00-.38967251846173D-01
+0.32723468546971D-040.20442300076842D+00-.68809861714307D-020.25376756104858D-01
+-.86741432886756D-010.20566943764070D-040.18648260098477D+000.54845710105689D-01
+-.16438012328352D+000.14421193564631D+00-.36905686092643D-04-.18783652465039D-01
+-.53232183996727D-010.17049972358696D+000.38967242710324D-010.32704215924421D-04
+-.20442300176352D+000.16905318499689D+000.98242007462042D-010.16905317626242D+00
+-.58861124331764D-010.18116366978973D+000.70225578796782D-03-.39390272901643D-04
+0.61703664737021D-010.51281696164981D-01-.16391770353619D+00-.80711961890918D-01
+-.24795777604525D-040.76430339456480D-01-.91395427688976D-010.10899267971755D+00
+-.95030787437640D-01-.58861115053286D-010.18116364220829D+00-.70226124891337D-03
+-.39391396393389D-04-.61703653505592D-010.10899266382118D+000.51281687916016D-01
+-.16391767901602D+000.80711952512863D-01-.24790543298360D-04-.76430328013382D-01
+-.91395411858537D-01-.95030774041017D-01-.68809939904106D-020.25376779568075D-01
+0.86741434921249D-010.20560901330282D-04-.18648259911460D+000.98242013925976D-01
+    20  a      eigenvalue=-.40517851597196D+00   nsaos=60                       
+-.33064447081868D-010.10943070090053D+00-.13286754476643D+000.70985507203822D-05
+-.50428383546823D-010.20074973719020D-01-.57811698241246D-01-.13442764705011D+00
+0.25731132791816D-040.84639117368309D-01-.13819438393337D-010.53556169540859D-01
+0.14013226579391D+000.17494877819108D-040.13721773915843D+00-.33064445939322D-01
+0.10943069548845D+000.13286753680893D+000.70786258359551D-050.50428379050791D-01
+0.20074971911533D-01-.57811691459586D-010.13442765341927D+000.25701228927496D-04
+-.84639113348847D-010.87851739226373D-010.13402812871749D+000.87851742631363D-01
+0.41712311565681D-01-.13459227373953D+00-.18495921839099D+000.13957427661598D-03
+-.11737462552842D+00-.17600256963793D-010.66164308308263D-01-.78081347955148D-02
+0.12793761979712D-03-.21348541236313D+000.17843476759580D+00-.15402227110767D+00
+-.19720496337043D-010.41712310223318D-01-.13459227012328D+000.18495922488098D+00
+0.13961144273347D-030.11737462535095D+00-.15402227117489D+00-.17600256148823D-01
+0.66164305967265D-010.78081361527170D-020.12795379910741D-030.21348541609937D+00
+0.17843476961109D+00-.19720499524515D-01-.13819435530268D-010.53556160612026D-01
+-.14013226702560D+000.17535589467274D-04-.13721773894324D+000.13402812545449D+00
+    21  a      eigenvalue=-.38859983503434D+00   nsaos=60                       
+-.24016401147456D-010.82364228366154D-01-.13610651942937D+00-.25864157808230D-04
+0.12611470157530D+000.43823474923420D-01-.14429947238286D+00-.10054827723914D+00
+-.33601485995974D-04-.96652240521215D-01-.23167362706049D-010.78855079737442D-01
+0.18391939449798D+00-.17002116237341D-040.19439926526441D-010.24016403116535D-01
+-.82364233380785D-01-.13610651762738D+000.25829761201083D-040.12611469947768D+00
+-.43823474773542D-010.14429947080526D+00-.10054828611340D+000.33585003836559D-04
+-.96652243692898D-01-.61742421057955D-010.10186308209617D+000.61742417787006D-01
+0.16396750359283D-01-.50435373073751D-010.10460080040339D+00-.13409362886885D-03
+0.22072243115931D+00-.78688414705230D-020.30548765632674D-010.20490869810885D+00
+-.10272728899699D-030.95184358520166D-01-.73686885078703D-010.15576476477346D+00
+0.17272641856586D+00-.16396750879225D-010.50435375521961D-010.10460079843139D+00
+0.13411027844262D-030.22072243571031D+00-.15576476761323D+000.78688413760495D-02
+-.30548765524689D-010.20490870471137D+000.10275279435928D-030.95184359087086D-01
+0.73686886499181D-01-.17272642383952D+000.23167360443175D-01-.78855074125742D-01
+0.18391940450383D+000.16943399180763D-040.19439927327476D-01-.10186308297858D+00
+    22  a      eigenvalue=-.36142277640778D+00   nsaos=60                       
+-.69717169650565D-010.23832077384622D+000.27623335134232D-01-.46943605966501D-04
+-.10507248539937D+000.44183179176683D-01-.15511959674034D+000.18068071159006D+00
+-.51372839775468D-04-.10828444900869D+00-.48068949352971D-010.16678603505348D+00
+-.65565049083711D-010.42259915771811D-040.21580722898485D+000.69717170261212D-01
+-.23832077210533D+000.27623339498613D-010.46877536467658D-04-.10507248702824D+00
+-.44183180336611D-010.15511959795513D+000.18068070212970D+000.51254017824072D-04
+-.10828445039010D+00-.22801570094403D+000.22087264098883D+000.22801569688517D+00
+-.16310326582732D-010.46550286020831D-010.12780401675670D+00-.13225307827030D-04
+-.42465097385560D-010.12498410012327D-01-.52302424158258D-01-.13806667488001D+00
+-.14160854283669D-040.77781565780073D-01-.43611802627414D-010.27294355909152D-01
+-.10722135097979D+000.16310326035919D-01-.46550284744654D-010.12780402007849D+00
+0.13217913094325D-04-.42465105278649D-01-.27294349843556D-01-.12498409043452D-01
+0.52302421057792D-01-.13806668266062D+000.14143258800554D-040.77781565342457D-01
+0.43611800598215D-010.10722135573090D+000.48068950922187D-01-.16678604041972D+00
+-.65565037014167D-01-.42337242230845D-040.21580722626286D+00-.22087264474225D+00
+    23  a      eigenvalue=-.34905309654126D+00   nsaos=60                       
+0.23991769988834D-01-.82820125554775D-01-.14503422262199D+00-.63597604093574D-04
+-.21822355905146D+000.11028874322045D-01-.34607708502038D-010.54190710578851D-01
+0.53393191806762D-040.25083677705368D+00-.62743292990093D-03-.75178917085742D-03
+-.12141061976991D+000.43296273542611D-04-.81433120889591D-02-.23991769007520D-01
+0.82820120449297D-01-.14503422311503D+000.63600879547307D-04-.21822355595297D+00
+-.11028875827421D-010.34607711687423D-010.54190698588502D-01-.53390363946713D-04
+0.25083677752602D+000.13621592586072D+00-.42197042007229D-01-.13621592809691D+00
+0.20305077426115D-02-.12482467705684D-010.18259901777899D+00-.59989593809608D-04
+-.40891919773228D-01-.76742797950139D-03-.82717722874890D-020.36517961654612D-01
+-.16161246181935D-030.25000362805263D+00-.21474445389481D+00-.11028662606280D-01
+0.85920549418853D-01-.20305094033280D-020.12482473340178D-010.18259901796074D+00
+0.60019554394173D-04-.40891923744771D-010.11028668150060D-010.76742849896953D-03
+0.82717697795972D-020.36517967949886D-010.16163545447871D-030.25000363572816D+00
+0.21474446105067D+00-.85920558112212D-010.62743399058553D-030.75178578657124D-03
+-.12141061049855D+00-.43274210991110D-04-.81433043793109D-020.42197034021117D-01
+    24  a      eigenvalue=-.34659391125214D+00   nsaos=60                       
+-.22493039210331D-010.75441160777811D-01-.10460647613043D-01-.28814416703209D-04
+-.18692128503341D-01-.18857792054218D-010.71187012113295D-01-.13776015842320D+00
+0.13745708620099D-040.37945032523204D-010.25853136946020D-01-.87504215743933D-01
+0.83950606215248D-01-.26217958564114D-040.70617033252414D-02-.22493039766713D-01
+0.75441161249823D-010.10460632755670D-01-.28838033610264D-040.18692132488222D-01
+-.18857794765514D-010.71187019780901D-010.13776013489715D+000.13680675481572D-04
+-.37945022437417D-010.11474487270386D+00-.61848753073337D-020.11474485729486D+00
+0.28615806554882D-01-.85632148285503D-01-.80091054895751D-01-.12838547964548D-03
+0.24985140458703D+000.45416605289934D-02-.75620232311071D-030.33868461732286D+00
+-.89565607837243D-04-.58128399741256D-02-.26794041021788D-010.14197322972462D+00
+0.26283209398975D+000.28615805181904D-01-.85632144893193D-010.80091066540591D-01
+-.12838134164813D-03-.24985140917931D+000.14197323363438D+000.45416616590733D-02
+-.75620673611822D-03-.33868462466336D+00-.89597954361140D-040.58128456689091D-02
+-.26794038119868D-010.26283209790116D+000.25853137398884D-01-.87504217797598D-01
+-.83950584104720D-01-.26216223247442D-04-.70617005421377D-02-.61848844941989D-02
+    25  a      eigenvalue=-.32659523036166D+00   nsaos=60                       
+-.34491608476233D-020.12397779967369D-010.77295214814315D-010.24888817316277D-04
+-.84350994007025D-010.20682550464567D-01-.66039747330510D-01-.22200559997147D+00
+0.91758810251006D-040.19049857177381D+000.28859353957631D-01-.92761074155133D-01
+0.14299451892155D+000.54659187589883D-040.31081247955696D+000.34491607868055D-02
+-.12397779444407D-010.77295208751333D-01-.24840236713487D-04-.84350986288172D-01
+-.20682548460369D-010.66039739905825D-01-.22200560218986D+00-.91644173825233D-04
+0.19049856542204D+000.21644657869438D+000.25450129576350D+00-.21644657665112D+00
+0.19429729191900D-02-.50547681803812D-02-.64495252955086D-010.35994314437736D-04
+-.18367727892595D-01-.43610165269208D-020.18237014162807D-01-.57540128552470D-02
+0.49209768249413D-04-.74868948664842D-010.51770177997727D-01-.14816576789042D-01
+-.15586485326750D-01-.19429735546416D-020.50547699069415D-02-.64495257906561D-01
+-.35988836169939D-04-.18367714778185D-010.14816567666640D-010.43610154680417D-02
+-.18237011124810D-01-.57539961125503D-02-.49207810910537D-04-.74868948993081D-01
+-.51770175750174D-010.15586473192459D-01-.28859355272796D-010.92761079100488D-01
+0.14299451461893D+00-.54685045824256D-040.31081248922458D+00-.25450130059657D+00
+    26  a      eigenvalue=-.30394366754680D+00   nsaos=60                       
+0.31819614794826D-02-.11722352395651D-010.18206610431127D+000.14209657049604D-03
+-.16376542464607D+00-.66470462622503D-020.18809063030085D-010.19526183171351D+00
+0.38771813593133D-040.66634582742179D-010.17631493317682D-01-.64677717054878D-01
+-.22204633594331D+00-.16672342129768D-040.10339806828543D+00-.31819765603651D-02
+0.11722406450382D-010.18206609454844D+00-.14202453886610D-03-.16376546880553D+00
+0.66470487457827D-02-.18809071466050D-010.19526192176384D+00-.38766753994355D-04
+0.66634615361994D-01-.50113151328399D-01-.48331345954750D-020.50113159340300D-01
+0.16625862027271D-020.93673124429112D-02-.18851757124503D+00-.14831540922540D-03
+0.19556287768262D+000.20834848590369D-01-.59112297858007D-010.25144636935197D+00
+-.40920576238098D-04-.11153897869090D+000.44596649138192D-010.14040901300612D+00
+0.16557626563765D+00-.16625752117851D-02-.93673558264637D-02-.18851762252453D+00
+0.14833047663904D-030.19556296980154D+00-.14040910480648D+00-.20834853117025D-01
+0.59112310933761D-010.25144633516708D+000.40951612697198D-04-.11153913288949D+00
+-.44596789473582D-01-.16557618449037D+00-.17631492638275D-010.64677721290842D-01
+-.22204642248197D+000.16762535342180D-040.10339800299360D+000.48332150224638D-02
+    27  a      eigenvalue=-.30135643337119D+00   nsaos=60                       
+0.25266781065937D-01-.92125788817467D-010.13888962003241D-02-.31403969579498D-03
+-.90564822747818D-01-.79806769780945D-020.27360316220493D-010.13804459014043D+00
+-.20801535323964D-030.62636370220175D-010.59121893207596D-02-.29415522164225D-01
+-.13133205854269D+00-.24528528346247D-03-.12807547746997D+000.25266778690826D-01
+-.92125778078650D-01-.13887749745018D-02-.31397650146833D-030.90564751690702D-01
+-.79806697964794D-020.27360293683229D-01-.13804449163624D+00-.20798648533309D-03
+-.62636355848977D-010.11285434767293D-01-.15635824077106D+000.11285466224696D-01
+-.16845587249466D-010.71721888118600D-01-.90248101686984D-01-.22463785195926D-03
+0.20922416323003D+000.10580750559281D-01-.27803709001423D-01-.43818818739554D-01
+0.12062207055597D-03-.29505174539866D+000.26864972899610D+000.20048865534266D+00
+-.14140133729298D+00-.16845587455233D-010.71721880183461D-010.90247981144959D-01
+-.22466633521014D-03-.20922407701527D+000.20048860145129D+000.10580739751591D-01
+-.27803679954410D-010.43818958833129D-010.12063212628716D-030.29505169336263D+00
+0.26864971577402D+00-.14140143674331D+000.59121777943732D-02-.29415480737278D-01
+0.13133194900687D+00-.24537142279566D-030.12807553428647D+00-.15635823818914D+00
+    28  a      eigenvalue=-.28049757926400D+00   nsaos=60                       
+0.19380670818147D-04-.79995096231962D-040.17283144552201D-030.34123827984875D+00
+-.22657509940019D-03-.22072426421678D-050.13599088880643D-04-.93191895148120D-04
+0.29574197198997D+000.64613383444018D-040.11659699479315D-04-.52194470360277D-04
+0.17123651635163D-030.29636855700684D+00-.27292552578390D-030.19403646940934D-04
+-.80080113754984D-04-.17289824652959D-030.34123826327824D+000.22661323739147D-03
+-.22260415447686D-050.13672322369421D-040.93293859886192D-040.29574196219778D+00
+-.64707798939523D-040.23072730620709D-03-.16579881523850D-030.23082205932770D-03
+-.36619212275813D-050.24151698932849D-040.22020492157906D-030.17797779590701D+00
+0.34437987734980D-030.79824490066462D-05-.31824268069822D-04-.13873747339702D-03
+0.89381479546752D-01-.15314996995269D-030.25409749977657D-030.27870351045324D-03
+-.24141283949886D-03-.36683131110888D-050.24182790224762D-04-.22014218819190D-03
+0.17797780459574D+00-.34442071006963D-030.27872370402036D-030.79860787224753D-05
+-.31832699202340D-040.13867803456822D-030.89381484571583D-010.15319836842220D-03
+0.25412172935718D-03-.24138539580891D-030.11684825473062D-04-.52288979693165D-04
+-.17115664892171D-030.29636855917657D+000.27294100371949D-03-.16583637225442D-03
+    29  a      eigenvalue=-.26875925153461D+00   nsaos=60                       
+0.10117329557024D-01-.43913656661613D-010.23582004574709D+000.17597385969762D-04
+0.94291689838764D-01-.13330024038328D-010.46485154158158D-01-.12404540536942D-01
+-.23851099021584D-04-.14576331014510D+000.61121887654268D-02-.18768581789282D-01
+0.48858105626215D-010.11339529428111D-040.63671048841387D-01-.10117330725086D-01
+0.43913659416081D-010.23582000205324D+00-.17597474401517D-040.94291667015362D-01
+0.13330025089135D-01-.46485156217969D-01-.12404484623309D-010.23853335351848D-04
+-.14576328499272D+00-.52210822746120D-010.49036373246642D-010.52210835494557D-01
+-.22088892454227D-020.36628408880596D-02-.16011234857575D+000.24320544571705D-03
+-.22087696171811D+00-.42551341533778D-020.16677459698243D-010.12926028926494D+00
+-.10814468399399D-030.20320726026513D+00-.23409394372112D+00-.26325819993442D+00
+0.21042547196119D+000.22088940798201D-02-.36628611358674D-02-.16011239658857D+00
+-.24325857639698D-03-.22087696739397D+000.26325821269043D+000.42551330187172D-02
+-.16677457622133D-010.12926030598883D+000.10815748287928D-030.20320724638024D+00
+0.23409394136005D+00-.21042548566742D+00-.61121881876233D-020.18768581450924D-01
+0.48858052003845D-01-.11355243063693D-040.63671030061694D-01-.49036335238006D-01
+    30  a      eigenvalue=-.25182923236293D+00   nsaos=60                       
+0.44631180112595D-02-.27075291902223D-010.27742561868887D+00-.25642800458238D-03
+-.73438843524605D-010.74238336077878D-02-.20548148066390D-01-.24776057965780D+00
+-.25790774976611D-030.25615602318584D-01-.27666954698903D-030.19122376505748D-02
+0.28338686099910D+00-.34167825013291D-03-.88566458449281D-010.44631216482963D-02
+-.27075307719820D-01-.27742566395934D+00-.25673545439528D-030.73438834701513D-01
+0.74238295005650D-02-.20548133793686D-010.24776057937325D+00-.25816718138222D-03
+-.25615589491041D-010.21027235669358D+000.29459952248314D-010.21027235817393D+00
+0.21633164421204D-01-.88555165827241D-010.26271614186858D+00-.33188370215298D-03
+0.67404901530902D-01-.74906118096776D-020.18914581953092D-01-.15082191088773D+00
+-.10652750275476D-030.82699154848888D-020.73768679985212D-010.98324172695117D-01
+-.15199440773699D+000.21633162919364D-01-.88555160134069D-01-.26271610172160D+00
+-.33172081287380D-03-.67404876870719D-010.98324138894010D-01-.74906114136364D-02
+0.18914582300911D-010.15082188206468D+00-.10639671732976D-03-.82699354432687D-02
+0.73768649413966D-01-.15199437051959D+00-.27666343082480D-030.19122168900128D-02
+-.28338686361562D+00-.34157385827255D-030.88566441597151D-010.29459955051625D-01
+    31  a      eigenvalue=-.24559590236000D+00   nsaos=60                       
+0.63641053348517D-02-.29582833662674D-010.41600337098513D-010.10311430395522D-03
+0.31422947008957D+00-.95724641501581D-020.28305338219986D-01-.53539641780673D-01
+0.43342596112979D-05-.28834634687602D+000.12629394734236D-01-.38386336082119D-01
+-.43041427257597D-020.11946512441821D-030.24001391458553D+000.63641053661328D-02
+-.29582834849598D-01-.41600357771841D-010.10311672277593D-03-.31422947736550D+00
+-.95724669830154D-020.28305347132530D-010.53539632789673D-010.44568629409446D-05
+0.28834636581130D+00-.19402115842753D+000.25985578697498D+00-.19402116734006D+00
+0.73089425345728D-02-.22704862876695D-010.62671894337816D-01-.12306100947273D-03
+0.12587866204070D+000.65693695593569D-02-.23812762085046D-01-.72038012250559D-02
+0.46202416601210D-04-.11291158362944D+000.10418065589657D+000.17090493158881D+00
+-.62338295932353D-010.73089417706808D-02-.22704861368568D-01-.62671881372819D-01
+-.12309247009329D-03-.12587864366563D+000.17090490938079D+000.65693695070659D-02
+-.23812762234335D-010.72037899844748D-020.46195548173749D-040.11291156505956D+00
+0.10418063495573D+00-.62338277399077D-010.12629393716503D-01-.38386333019048D-01
+0.43041430953038D-020.11961642389579D-03-.24001391209892D+000.25985578587383D+00
+    32  a      eigenvalue=-.22623990577178D+00   nsaos=60                       
+0.71669396679747D-05-.24247535186132D-040.12618077260775D-03-.36177233051801D+00
+-.21362819813978D-04-.47928068099413D-050.20629132362247D-040.52439272435030D-04
+-.13796730770043D+000.92942038192613D-040.20494712115108D-04-.84255831782885D-04
+-.66651709185376D-040.13406973183286D+000.21168372927924D-05-.71643732073412D-05
+0.24231104931772D-040.12598074322587D-030.36177233207792D+00-.21305848300019D-04
+0.47989250113866D-05-.20648618747694D-040.52682307268644D-040.13796732328134D+00
+0.92911570685331D-040.24406789228296D-04-.40319183343823D-04-.24242441461024D-04
+-.33252899600547D-050.25511152794706D-040.83013470695283D-040.37422914372858D+00
+0.30497996015449D-030.11690891277487D-04-.44034540064613D-040.11711420041091D-03
+0.25520032427264D+000.84740488383839D-040.40072369867249D-040.11243424995329D-03
+0.11529249196662D-040.33454903885057D-05-.25596330989122D-040.82882251623178D-04
+-.37422915184841D+000.30497925347174D-03-.11240297111887D-03-.11697427527145D-04
+0.44052726589150D-040.11722249719296D-03-.25520033414512D+000.84715941855090D-04
+-.40052225719455D-04-.11601177936246D-04-.20494048127277D-040.84253087929960D-04
+-.66909634715419D-04-.13406971470979D+000.21452994428796D-050.40365313483901D-04
+    33  a      eigenvalue=-.17736537468082D+00   nsaos=60                       
+0.11212816780414D-05-.15586624643327D-040.37663701713411D-04-.71562086340927D-02
+0.36544567638770D-04-.12837267744850D-040.51391907517276D-04-.50053890630244D-04
+-.18302198580800D+00-.18394517744525D-040.79284639925143D-05-.32219396021509D-04
+0.48707395660552D-05-.18693416051247D+000.45293105096929D-040.11179116371522D-05
+-.15570198383994D-04-.37648455392483D-04-.71561820962050D-02-.36540262990172D-04
+-.12831743862171D-040.51368459787817D-040.49991647797796D-04-.18302194594310D+00
+0.18399761003627D-04-.35879426688130D-050.30302256137888D-04-.36028088616965D-05
+0.10126814677606D-04-.41978257472567D-040.17973542534561D-030.41446116936613D+00
+0.26355397818412D-03-.19112093236749D-050.42564555459208D-050.92980692501050D-04
+0.41304572948893D+000.23833483761805D-030.90703972586677D-050.41464631038325D-04
+-.17973037546625D-040.10132958603854D-04-.42005728689884D-04-.17982098455284D-03
+0.41446116784908D+00-.26358735290004D-030.41479697043989D-04-.19118678777358D-05
+0.42589158401564D-05-.93015711907373D-040.41304574180562D+00-.23836541091221D-03
+0.90748796600986D-05-.17982137689217D-040.79248100173920D-05-.32204353555720D-04
+-.49071071573869D-05-.18693415372197D+00-.45308975148993D-040.30309317210101D-04
+    34  a      eigenvalue=-.16527090478159D+00   nsaos=60                       
+0.41026648426358D-05-.18090020968599D-04-.28290735283354D-050.79714461694197D-02
+-.22017742282651D-040.51696237617685D-05-.18538659804113D-04-.47856787924671D-04
+-.45668795602423D+000.14263750691007D-030.50948236147254D-05-.20543903398148D-04
+-.39746515425402D-04-.46484922763220D+000.99163098088925D-04-.41029583656621D-05
+0.18092549143859D-04-.28567671762541D-05-.79714392066432D-02-.21897461748866D-04
+-.51701303416350D-050.18551921806993D-04-.47714382183164D-040.45668795449671D+00
+0.14250218996172D-030.33983092324092D-040.10144146737960D-04-.33876697141335D-04
+0.13247405192064D-05-.77061991487203D-05-.64604524273563D-05-.20935056487266D-02
+-.24888586434518D-04-.35828066184203D-050.14200740854073D-04-.82787710604869D-05
+0.11365673717733D-010.16667309963909D-04-.96228954491757D-05-.20280089630175D-04
+-.11617852838088D-06-.13235402380288D-050.77003882659753D-05-.64797979090835D-05
+0.20934864605382D-02-.24896765645448D-040.20272374231622D-040.35839827867769D-05
+-.14205939639287D-04-.82740284085584D-05-.11365695261525D-010.16647436229434D-04
+0.96209313844337D-050.11672798592959D-06-.51019743578871D-050.20565587344918D-04
+-.39707555597993D-040.46484924708861D+000.99318427262664D-04-.10249464792294D-04
+    35  a      eigenvalue=-.12668048551944D+00   nsaos=60                       
+-.58766791297542D-050.34174085779075D-04-.14652066630503D-030.37345706245802D+00
+-.50122884091739D-040.13177718910232D-04-.58018801891760D-040.28742744252845D-04
+0.22759274868780D+00-.29050312214567D-04-.12661421083038D-040.55242026335289D-04
+-.40525055913514D-04-.20881004411117D+000.15071671895110D-040.58743332267627D-05
+-.34158433059163D-04-.14645123044044D-03-.37345705004479D+00-.50134285980556D-04
+-.13176458445027D-040.58015584243613D-040.28613431535800D-04-.22759276459615D+00
+-.29051741571699D-04-.24569429168869D-040.14101295369870D-040.24521178329247D-04
+0.75901493397848D-05-.40831889223303D-040.10641295053276D-030.22509446029544D+00
+0.12215365686590D-03-.77274974679457D-050.30328808707782D-040.80482885691066D-04
+0.41568074230674D+000.26440221817923D-03-.10179091241097D-04-.24687208416535D-04
+-.13697670588538D-04-.76012285082396D-050.40884173708804D-040.10649889133599D-03
+-.22509443830292D+000.12217461963990D-030.24679039934376D-040.77298233604484D-05
+-.30337466662674D-040.80511291030045D-04-.41568073509651D+000.26444592077257D-03
+0.10175545853058D-040.13710162752211D-040.12659186444630D-04-.55230189267463D-04
+-.40405754500260D-040.20881002369245D+000.15087747060416D-04-.14132443433386D-04
+    36  a      eigenvalue=0.57022348437510D-02   nsaos=60                       
+0.65445293974432D-05-.24789332293644D-040.16462945970035D-03-.42801456445000D+00
+0.52348588941028D-040.13457595786510D-04-.61475312178607D-040.59383059633066D-07
+0.27387579475454D+00-.48049767610568D-040.45911365904652D-05-.18881894874715D-04
+0.49116734991745D-040.22495756856310D+00-.33165321744010D-040.65392891642459D-05
+-.24764385968240D-04-.16457310889596D-03-.42801456115200D+00-.52352927162043D-04
+0.13458767329401D-04-.61476434223062D-040.59416612164021D-070.27387575087173D+00
+0.48027111911271D-040.67583548345121D-040.67963738752402D-040.67557847093057D-04
+-.96531567565006D-050.38658587326679D-04-.11479523791491D-03-.25702430168044D+00
+-.16055304301301D-03-.49084518231583D-050.24667411867937D-040.11013697050177D-03
+0.46522145795177D+000.28521134607098D-03-.22288510926985D-04-.68503710296087D-04
+0.11050161484965D-04-.96645110772188D-050.38709224487353D-040.11487555238220D-03
+-.25702435186966D+000.16057765568378D-03-.68526777328450D-04-.49079676746832D-05
+0.24665851339559D-04-.11019326498244D-030.46522149971200D+00-.28522972014155D-03
+-.22299380154533D-040.11062847118304D-040.45865619303942D-05-.18861860363089D-04
+-.49040142339324D-040.22495761967254D+000.33192785251653D-040.67967973643747D-04
+    37  a      eigenvalue=0.54816912292941D-01   nsaos=60                       
+-.44668236603741D-050.20677415149090D-040.24045491306195D-04-.34400187752403D-01
+-.55182206488633D-050.38204545349673D-05-.19050891101621D-04-.40640436910197D-04
+-.55120213049965D+000.16078832549309D-03-.20756716075038D-050.76131729478159D-05
+0.62501931279099D-040.58272600996173D+00-.10825397082914D-03-.44715449042056D-05
+0.20698906974056D-04-.24066497733852D-04-.34400195615058D-010.55825874446594D-05
+0.38258660581067D-05-.19072288511010D-040.40480068381699D-04-.55120213045676D+00
+-.16068726559960D-030.13512660365620D-04-.26065635178034D-040.13576874622787D-04
+-.34602140624616D-060.42169538153787D-050.26308007547369D-040.50874540678323D-02
+0.23051283996982D-040.33870943701457D-05-.16825443046299D-040.15738926515754D-04
+0.12497937880383D-010.58079947358458D-060.11818426515455D-040.92193768002902D-05
+-.40456439980158D-05-.34630233491841D-060.42192215588058D-05-.26313096941735D-04
+0.50874639238184D-02-.23049186533505D-040.92522458688196D-050.33926891213102D-05
+-.16852885001376D-04-.15753748973762D-040.12497924715156D-01-.56993468916348D-06
+0.11822301789963D-04-.40330473507245D-05-.20864748696984D-050.76725309725960D-05
+-.62400954954627D-040.58272599171829D+000.10838608988800D-03-.26041628065333D-04
+    38  a      eigenvalue=0.69459631736048D-01   nsaos=60                       
+0.31698656154561D-05-.12662450264822D-050.22722385071142D-04-.15141133417118D-01
+0.18706712815272D-040.74426453435155D-05-.36468487177798D-040.65984075488908D-04
+0.23792750097609D+000.88148796211718D-050.30463211751796D-05-.16260906789575D-04
+-.31807729955078D-04-.24799154404394D+000.41258414915033D-04-.31636471345795D-05
+0.12390513137729D-050.22711899704514D-040.15141212943152D-010.18692738938788D-04
+-.74333971625213D-050.36423548248920D-040.65905190976170D-04-.23792755879203D+00
+0.88305664135525D-050.78160194735692D-05-.20976302234347D-04-.77816515452924D-05
+0.13034599586167D-04-.66953620394236D-040.19835322015711D-030.51983746248961D+00
+0.31682015557562D-03-.19594879444624D-050.77241456577060D-05-.14375417292197D-03
+-.51641776879167D+00-.28464048614054D-030.23398493657439D-040.28663491303245D-04
+-.27547348677943D-04-.13046814749481D-040.67013937284487D-040.19846634951295D-03
+-.51983746420178D+000.31686205146278D-03-.28677563980786D-040.19622042117669D-05
+-.77375731461548D-05-.14381950318392D-030.51641773839089D+00-.28465617555186D-03
+-.23410034339090D-040.27566911194816D-04-.30467250985543D-050.16265931192341D-04
+-.31741490819938D-040.24799152259433D+000.41290288926719D-040.20992502090772D-04
+    39  a      eigenvalue=0.13752649891103D+00   nsaos=60                       
+0.14862341744553D-04-.88503717604147D-040.21558857388021D-03-.50641460197380D+00
+0.20169506168223D-04-.51635252954600D-050.28731839515141D-040.35775929689645D-04
+0.20376170233605D+00-.14207946972711D-030.34162926213643D-04-.17732013413721D-03
+0.16299015143161D-040.16757905526663D+00-.33681624735114D-040.14853253978310D-04
+-.88450999784016D-04-.21550220411328D-03-.50641452939459D+00-.20183254892643D-04
+-.51569979531694D-050.28702128499805D-04-.35656701415719D-040.20376162177704D+00
+0.14203681023134D-030.10609365077638D-030.16230956124464D-030.10604134083109D-03
+-.13118920067379D-040.55993349725456D-040.84932463078716D-040.52579211965081D+00
+0.32714224288321D-03-.70410712362206D-050.37926899775424D-04-.11626696855008D-03
+-.36516429816456D+00-.18157264050133D-030.34686814174281D-05-.85587332696027D-04
+-.18182971109783D-04-.13131202213934D-040.56054341848610D-04-.84940605215657D-04
+0.52579212832140D+00-.32716646818090D-03-.85612201087723D-04-.70407078273092D-05
+0.37927240769515D-040.11630763641614D-03-.36516428698022D+000.18159976157876D-03
+0.34599144477588D-05-.18175288078646D-040.34155694593400D-04-.17728538897117D-03
+-.16200350340151D-040.16757914002742D+000.33712049868898D-040.16232118591179D-03
+    40  a      eigenvalue=0.21873811945626D+00   nsaos=60                       
+0.18194509945143D-04-.98923428262696D-040.39131205772040D-03-.54381027573624D+00
+-.45257141326940D-04-.57563260180114D-050.36666795903965D-040.19532984673447D-03
+0.46325908500323D+00-.22074162607670D-03-.51463771887464D-050.26723613082096D-04
+0.19534295797189D-03-.45974052192475D+000.15190471180646D-05-.18130339273002D-04
+0.98559709422445D-040.39110672203403D-030.54381036959419D+00-.45300496448181D-04
+0.57967018815784D-05-.36894456431192D-040.19511346095030D-03-.46325913266995D+00
+-.22050253957659D-030.22785913990690D-03-.42677790193972D-04-.22746180517872D-03
+0.53558812659539D-04-.28271382786035D-030.91701047980133D-04-.29186432278091D+00
+-.24539817077024D-030.15212619143913D-05-.13974848965124D-040.44036520480187D-04
+0.15425394975499D+000.64315260338485D-04-.71084063696123D-050.23123517939932D-03
+0.41838982962814D-06-.53615695313671D-040.28302191024209D-030.91945207725085D-04
+0.29186425528521D+00-.24530821317383D-03-.23126451946519D-03-.14990230104413D-05
+0.13856188499881D-040.44079383730607D-04-.15425390807330D+000.64381613141341D-04
+0.70579373248116D-05-.26071845098646D-060.51725817646589D-05-.26870020226571D-04
+0.19546149004743D-030.45974049362806D+000.17761716424578D-050.43019743026049D-04
+    41  a      eigenvalue=0.28313517344017D+00   nsaos=60                       
+0.67962028828357D-01-.39841416116860D+000.26224370566889D+000.25924229003959D-03
+0.91904289548339D-010.48299208156497D-01-.28884400271612D+000.12427627188929D+00
+-.15482053797468D-03-.20539880122860D+000.26726975618433D-01-.16333413931036D+00
+-.54063761494949D-01-.97450296534651D-04-.30800875661265D+000.67962000966177D-01
+-.39841399974957D+00-.26224356142956D+000.25877296051106D-03-.91904142736107D-01
+0.48299209433702D-01-.28884401164623D+00-.12427622159463D+00-.15435569081146D-03
+0.20539888002296D+000.43020384411248D+000.41207617803366D+000.43020388920584D+00
+-.50069787169389D-010.28214454940833D+00-.32712278210066D+000.20580284774644D-03
+-.24711425002300D+000.43075782815152D-01-.24873800359669D+00-.14247572075871D+00
+0.15511501731003D-03-.13544782999453D+00-.96087458021876D-010.14256456085415D+00
+0.36031876584946D+00-.50069799869797D-010.28214462020889D+000.32712294135103D+00
+0.20568296557435D-030.24711444859880D+000.14256476221400D+000.43075798358674D-01
+-.24873809497454D+000.14247582770754D+000.15521690682276D-030.13544799812986D+00
+-.96087602406528D-010.36031898569955D+000.26726971143133D-01-.16333411581895D+00
+0.54063771875474D-01-.97884863179422D-040.30800893196223D+000.41207633237035D+00
+    42  a      eigenvalue=0.29069298226459D+00   nsaos=60                       
+0.32429368258157D-01-.19028495539994D+000.11353611705693D+00-.32587956610195D-04
+0.28832587319498D+00-.15713179168535D-010.95493134456454D-01-.38483863534385D-02
+0.15077490242378D-030.29053338987820D+000.61123241413953D-02-.29292688365109D-01
+-.23226968786758D-02-.67385658751955D-050.36037111570890D+00-.32429394214284D-01
+0.19028510917048D+000.11353625471168D+000.32611419525503D-040.28832589695441D+00
+0.15713145335806D-01-.95492930989378D-01-.38482890953380D-02-.15067795186922D-03
+0.29053324060180D+00-.28410696036695D+00-.32014742629116D+000.28410666789525D+00
+-.11332669555062D-010.67316010885964D-010.20221577569440D+00-.38114148581854D-03
+0.34334051284754D+00-.19010610773628D-020.15436106531197D-010.16032334392150D+00
+-.18167041125051D-030.29643936302658D+000.31574024756046D+00-.44121520157866D+00
+-.27448954961196D+000.11332700854966D-01-.67316189703191D-010.20221563027819D+00
+0.38119591269220D-030.34334043572721D+000.44121520574389D+000.19010352281466D-02
+-.15435956329752D-010.16032330422688D+000.18170624077171D-030.29643935430391D+00
+-.31574027122475D+000.27448940314867D+00-.61123471484429D-020.29292827030072D-01
+-.23227688505834D-020.66020091646375D-050.36037097180613D+000.32014717418256D+00
+    43  a      eigenvalue=0.32755406624070D+00   nsaos=60                       
+0.60982020051544D-01-.35399579161039D+000.45390507097921D+000.44674916427084D-03
+-.83063479330704D-01-.63432766885547D-020.30523743488338D-010.31705322694904D+00
+-.34195189787900D-03-.25794977578223D+000.27685126893208D-01-.16731550293908D+00
+0.21833256986161D+000.20004577349906D-03-.11708968934464D+00-.60982041403403D-01
+0.35399592102107D+000.45390503674732D+00-.44657339377567D-03-.83063370162332D-01
+0.63432809206892D-02-.30523772011520D-010.31705310122068D+000.34171083208206D-03
+-.25794962643433D+000.38868172484154D+000.11559216046478D+00-.38868156551812D+00
+0.93752944989804D-01-.54605790763783D+000.32769335115169D+00-.54282026044627D-04
+0.80001474031961D-01-.55096223282668D-010.32235164309132D+000.14979458778514D+00
+-.16075180802035D-030.11638604879955D+000.10381406505868D-010.13978313406233D+00
+-.37772636991482D+00-.93753007768053D-010.54605828256466D+000.32769322086903D+00
+0.54293816482700D-040.80001113234039D-01-.13978373643173D+000.55096246889531D-01
+-.32235177602385D+000.14979435187173D+000.16078887655220D-030.11638575714751D+00
+-.10380996332070D-010.37772612224901D+00-.27685087442639D-010.16731526592277D+00
+0.21833264151664D+00-.20009158598101D-03-.11708978809452D+00-.11559205569731D+00
+    44  a      eigenvalue=0.32785230715642D+00   nsaos=60                       
+-.25600171038587D-010.15337090921043D+000.81421226945269D-010.16481906753287D-03
+-.10896184792658D+000.18539863106849D-01-.11805681645075D+000.20998250330622D+00
+-.12038017562885D-03-.16473438184594D+000.67700318021567D-01-.40975394746687D+00
+-.12601050272355D+00-.44946875824729D-040.54735691384920D-02-.25600101867936D-01
+0.15337050995535D+00-.81421584218384D-010.16469513184661D-030.10896200618764D+00
+0.18539836285791D-01-.11805666733802D+00-.20998275346377D+00-.12019447924631D-03
+0.16473467939959D+000.28520840435029D+000.29613689952189D+000.28520872639608D+00
+-.62927479566636D-010.37598548499624D+000.77597057264341D-01-.32607126627946D-03
+0.33531716331768D+000.19622893261752D-01-.10913577081611D+000.23373559480170D+00
+-.21483673656460D-030.29798518722410D+000.38525953057324D+00-.57682141186617D+00
+-.24977072865984D+00-.62927392193760D-010.37598497542559D+00-.77597346961395D-01
+-.32615205763737D-03-.33531716242135D+00-.57682120854776D+000.19622857345288D-01
+-.10913556562655D+00-.23373571210233D+00-.21486533623217D-03-.29798529242362D+00
+0.38525957061811D+00-.24977100209595D+000.67700365554019D-01-.40975423120233D+00
+0.12601033756127D+00-.45066725898556D-04-.54733480434264D-020.29613719588888D+00
+    45  a      eigenvalue=0.35253110323666D+00   nsaos=60                       
+-.52598562178026D-010.31610850004613D+00-.14907437091858D+00-.12314924563902D-03
+0.27157143275495D+000.10312126813901D+00-.62491661161064D+00-.19472133667526D-01
+0.68272801034976D-040.46245964840528D-01-.76347279096061D-010.46279282786308D+00
+-.16394754574828D+000.38791191543339D-040.55462006829730D-01-.52596776801379D-01
+0.31609808184550D+000.14907442232645D+00-.12307386668033D-03-.27156885530858D+00
+0.10311907842019D+00-.62490349807294D+000.19475045954816D-010.68225950379491D-04
+-.46245736353429D-010.21848457085466D+00-.24350293298041D+000.21847703350885D+00
+0.21124583878685D-01-.13348032077502D+000.23961849342297D+000.86288923939270D-04
+-.12754037812890D+000.10264237748765D+00-.63575520369316D+00-.59890994820258D-01
+-.15367795082388D-030.23033056481431D+000.50826783154424D+000.14964728880661D+00
+0.30255338255187D+000.21125380744919D-01-.13348527942157D+00-.23962214026554D+00
+0.86290344160618D-040.12754343734082D+000.14965121717549D+000.10264406823504D+00
+-.63576572528122D+000.59893353430151D-01-.15370005541667D-03-.23033565471608D+00
+0.50827683003721D+000.30255925763488D+00-.76345617933284D-010.46278301663907D+00
+0.16394741573405D+000.38790943479396D-04-.55459718670266D-01-.24349546915056D+00
+    46  a      eigenvalue=0.35311125145999D+00   nsaos=60                       
+-.85644892312882D-010.49994758010704D+000.63368875760375D-02-.39075582444419D-04
+0.12072025107251D+000.10496012342845D+00-.62871424916238D+000.13991639904642D+00
+0.28462542972579D-050.94133130838596D-02-.80549279264678D-010.47605627110112D+00
+-.18370034853603D-020.20857846335604D-040.11116381236361D+000.85645941382610D-01
+-.49995389059980D+000.63337732787834D-020.39041582705633D-040.12072590561121D+00
+-.10496226432617D+000.62872723005862D+000.13991592896879D+00-.28980089284844D-05
+0.94141238449165D-020.36315571923973D+00-.36323628320542D+00-.36316031104179D+00
+-.37611974991986D-010.23416996230929D+00-.17223590119228D+00-.48632571508623D-04
+0.14389108208679D+00-.80225543205952D-010.49946691356841D+000.11108715235476D+00
+0.11884834593085D-03-.24383757283003D+00-.42890287912014D+00-.18412286994247D+00
+-.27753323963169D+000.37611585069012D-01-.23416747864244D+00-.17223093165270D+00
+0.48619204618573D-040.14388851605711D+000.18411999618578D+000.80223370299139D-01
+-.49945345782678D+000.11108595804710D+00-.11885104280388D-03-.24383269349444D+00
+0.42889210189210D+000.27752689408705D+000.80550895538099D-01-.47606607031960D+00
+-.18403647244093D-02-.20861827019159D-040.11116494339468D+000.36324140793405D+00
+    47  a      eigenvalue=0.37061722017995D+00   nsaos=60                       
+-.14742599742624D-010.92537590358417D-010.25627639672023D+000.28223682857189D-03
+0.97108918505666D-010.43148194384912D-030.88766757528842D-020.10170619726720D+00
+-.10075910460784D-030.19936979485568D+00-.54731583547913D-010.33813090739610D+00
+0.31865228630193D+000.17510693530005D-030.30635037503602D+000.14742550255957D-01
+-.92537294114187D-010.25627639699231D+00-.28216203650391D-030.97108815743711D-01
+-.43143839408981D-03-.88769419867891D-020.10170614779707D+000.10072397220526D-03
+0.19936966344799D+00-.59341671228848D-01-.57941877312532D+000.59341739313385D-01
+0.75959171859777D-01-.47289095987306D+000.71100374126850D-010.16804672404148D-03
+-.22981275128997D+000.25976826299778D-01-.17022428763320D+00-.29807004833625D+00
+0.87976860019996D-04-.21658753848081D-01-.60679227361551D-020.44865284988570D+00
+0.34724719826756D+00-.75959136693147D-010.47289074797614D+000.71100310262196D-01
+-.16806535570389D-03-.22981264751161D+00-.44865265042274D+00-.25976829056418D-01
+0.17022429706840D+00-.29807004745456D+00-.88008925969514D-04-.21658756825265D-01
+0.60679087812166D-02-.34724720325431D+000.54731584570854D-01-.33813091289151D+00
+0.31865239890619D+00-.17526611857991D-030.30635037616833D+000.57941879386882D+00
+    48  a      eigenvalue=0.37812586485488D+00   nsaos=60                       
+-.13046372125977D+000.78533492507455D+000.43704110559874D-010.46194054681758D-05
+0.23231767716888D-010.67394367458372D-01-.41662068267245D+000.24853077921840D+00
+0.36284096744046D-040.24116198817048D+000.78859943826016D-01-.48747035800136D+00
+-.28298791665470D+000.67089115115192D-05-.11429216428419D-02-.13046370062293D+00
+0.78533481060768D+00-.43703981248190D-010.46724869643968D-05-.23231990839226D-01
+0.67394340039973D-01-.41662051672313D+00-.24853063464185D+000.36330046931759D-04
+-.24116224136056D+000.19492719015849D+000.30433470159427D+000.19492675366518D+00
+0.93277454786078D-01-.55978938340832D+000.80617505701485D-010.37411416507590D-04
+-.11245264401037D+00-.66680185442300D-010.40150062863177D+000.32713953012626D-01
+-.10636608622783D-040.21525082126152D-03-.21271155999764D+000.36806687422561D+00
+-.24104699614970D+000.93277527768937D-01-.55978981927987D+00-.80617269538387D-01
+0.37413256674125D-040.11245273095611D+000.36806725369247D+00-.66680325835620D-01
+0.40150149481646D+00-.32713871483204D-01-.10644337094523D-04-.21494540687294D-03
+-.21271233725917D+00-.24104725953194D+000.78859947629010D-01-.48747036978724D+00
+0.28298801620256D+000.66880192990550D-050.11425701907712D-020.30433440970353D+00
+    49  a      eigenvalue=0.39123455269074D+00   nsaos=60                       
+-.56593260609698D-010.33317606244244D+000.12271682969815D+000.78278340110183D-04
+-.15019408647237D+000.62739460951604D-01-.38158038462034D+000.13690711199569D+00
+-.11754037058740D-03-.17571392897019D+00-.55454508131168D-010.33254734127787D+00
+0.13060168273037D+000.94605492079629D-05-.15626152110498D+000.56593408415897D-01
+-.33317695969948D+000.12271690122037D+00-.78260341140837D-04-.15019416085112D+00
+-.62739498736914D-010.38158062223986D+000.13690742154561D+000.11739645020406D-03
+-.17571359032097D+000.46688141067992D+00-.60837341701695D-01-.46688148715086D+00
+-.68874056987559D-010.41369906999029D+000.13622318948458D+00-.33807103064433D-04
+0.54252002416090D-010.11471158310224D+00-.71179618164799D+00-.89832136939690D-02
+-.11089667480016D-030.15581845860093D+000.54190052310171D+00-.29231361943413D+00
+0.31093777157311D+000.68873951857219D-01-.41369843004459D+000.13622328683544D+00
+0.33815118662654D-040.54251859359392D-010.29231320639569D+00-.11471152049781D+00
+0.71179580214650D+00-.89832305903005D-020.11090719363889D-030.15581847775096D+00
+-.54190033847647D+00-.31093757639266D+000.55454383422074D-01-.33254656468323D+00
+0.13060141934300D+00-.94160485912428D-05-.15626155271586D+000.60836885780282D-01
+    50  a      eigenvalue=0.41594058898631D+00   nsaos=60                       
+-.37956557055694D-010.23567557564659D+000.56817907250075D-01-.32098860938616D-04
+-.33862151797192D+00-.94484123379298D-010.59394613898337D+000.17314967149472D+00
+0.21815248330835D-040.14393149660808D+000.10807221034733D+00-.67694509770703D+00
+0.11110367244667D+000.78412124184751D-050.10141892168328D+00-.37956541036004D-01
+0.23567547989372D+00-.56817846963231D-01-.32037110198617D-040.33862134427680D+00
+-.94484120392035D-010.59394611655559D+00-.17314969888764D+000.21773652031159D-04
+-.14393155207524D+00-.33161400742832D+000.20170914637253D+00-.33161405424780D+00
+0.30224694198792D-01-.20859986105320D+000.77039298371311D-01-.53339004502705D-04
+-.42857900316770D-010.68066368512921D-01-.43383015565375D+00-.38696478506261D+00
+0.52196856145019D-040.12918471148529D+000.30195292679972D+000.80206429189212D-01
+0.48910600905256D+000.30224715697343D-01-.20859999342168D+00-.77039242471293D-01
+-.53335793459140D-040.42857862588494D-010.80206469903747D-010.68066333023155D-01
+-.43382992878317D+000.38696486008393D+000.52235380206473D-04-.12918466541549D+00
+0.30195275640131D+000.48910596975643D+000.10807223782246D+00-.67694526847102D+00
+-.11110354289875D+000.79529777070547D-05-.10141898699932D+000.20170920384968D+00
+    51  a      eigenvalue=0.46317435547521D+00   nsaos=60                       
+0.62177804417971D-01-.41133005047649D+00-.59790026740314D+00-.19865429010272D-03
+-.12626810915453D+00-.47154965901672D-010.30261751132736D+000.26510708277360D-01
+-.54821753812510D-04-.30545969945683D+00-.98095596243689D-020.63211692594465D-01
+0.14396821792826D+00-.37511783689374D-04-.44927308394371D+000.62177788977852D-01
+-.41132995447851D+000.59790027901258D+00-.19866331905573D-030.12626802185814D+00
+-.47154960510005D-010.30261747869881D+00-.26510754594524D-01-.54806459384118D-04
+0.30545958197740D+000.50061355853732D-010.25882790987302D+000.50061320865905D-01
+0.77730980293050D-01-.50447803137139D+00-.57635647126123D-020.49363028315748D-04
+-.15064529820259D+00-.18620633937459D-010.11454749456748D+000.11906137484118D+00
+-.23983046142213D-030.36043036368940D+000.24826207926074D+000.30963312802015D+00
+-.24623818780748D+000.77730984521774D-01-.50447806103453D+000.57636442667238D-02
+0.49338243922737D-040.15064530139978D+000.30963314736512D+00-.18620638293082D-01
+0.11454752415886D+00-.11906133886714D+00-.23985621564655D-03-.36043042000545D+00
+0.24826209772538D+00-.24623818080826D+00-.98095463421769D-020.63211601622222D-01
+-.14396820637220D+00-.37538981229541D-040.44927316326537D+000.25882800168031D+00
+    52  a      eigenvalue=0.48066715901031D+00   nsaos=60                       
+0.36398485218665D-02-.15470041242958D-01-.61939363800137D-010.20519057013403D-04
+0.56093356483436D+000.38255800354946D-01-.26257162856492D+000.46828136334793D+00
+0.26821257026031D-040.18032327410613D+000.94487931265312D-01-.62732215240128D+00
+-.12331112396216D+000.25057819051192D-05-.15466670792945D-01-.36398413222282D-02
+0.15469992976256D-01-.61939336867373D-01-.20498231941902D-040.56093359631685D+00
+-.38255838511552D-010.26257188097095D+000.46828129976850D+00-.26931798971590D-04
+0.18032319205163D+000.21965132467306D+000.29761974768044D+00-.21965147097714D+00
+0.28199573746170D-01-.20016350937930D+00-.47990666425999D-01-.21709608086691D-03
+0.25652918708267D+00-.72225037684430D-020.55811329487110D-01-.48699644443546D+00
+0.17626944858244D-03-.13064954643515D-01-.84022973768025D-01-.13866670195163D+00
+0.36156819740302D+00-.28199573967174D-010.20016350594141D+00-.47990686614714D-01
+0.21710855760233D-030.25652926049748D+000.13866674430942D+000.72225183957833D-02
+-.55811426041258D-01-.48699647281753D+00-.17633310812162D-03-.13064996091099D-01
+0.84023067443849D-01-.36156818279512D+00-.94487904028841D-010.62732197300838D+00
+-.12331125477848D+00-.25325768331756D-05-.15466583492042D-01-.29761963951683D+00
+    53  a      eigenvalue=0.51119486143645D+00   nsaos=60                       
+0.19040418364481D-02-.18345032633548D-01-.53787581750477D-01-.34420280250752D-05
+-.20652691191144D+00-.20704667914356D-020.19451336349789D-010.38109824741003D+00
+-.18096239506229D-03-.53207844497763D+000.13557003939523D-02-.13576008766905D-01
+0.18943741028573D+000.92832849155367D-040.52625599770411D+000.19040374256788D-02
+-.18345007558426D-010.53787544511329D-01-.34723447730850D-050.20652699537042D+00
+-.20704564904475D-020.19451269777692D-01-.38109816510786D+00-.18078519864775D-03
+0.53207850960276D+000.51282337774561D+00-.44421341084843D+000.51282342554095D+00
+0.51763826501621D-01-.35050684645640D+00-.15926717032075D+00-.72547356580091D-04
+0.12951159674638D+00-.41756571022956D-010.28096582992240D+00-.27840439901133D+00
+0.42086087009374D-040.91896167214902D-01-.12827416022573D+000.84795906304523D-01
+0.73334966700551D-010.51763824765222D-01-.35050683267484D+000.15926718129820D+00
+-.72550192954410D-04-.12951157528505D+000.84795920320999D-01-.41756566105658D-01
+0.28096579482129D+000.27840434492632D+000.42115772831270D-04-.91896223553029D-01
+-.12827408374175D+000.73334924166089D-010.13556798171121D-02-.13575873314223D-01
+-.18943736828753D+000.92931955001321D-04-.52625594609815D+00-.44421341330601D+00
+    54  a      eigenvalue=0.53334623217355D+00   nsaos=60                       
+-.54740479281200D-010.37473735283552D+00-.14359098084668D-020.38822954847024D-04
+-.23442964821121D+00-.86547289999651D-010.58935208052289D+000.40256122277268D+00
+0.90872762898447D-050.32320808988973D+000.38751660880441D-01-.26174651515250D+00
+0.71294492038455D+00-.75097952547977D-04-.19945616088704D+000.54740493419011D-01
+-.37473745007387D+00-.14359509055165D-02-.38781084421146D-04-.23442968232262D+00
+0.86547296129715D-01-.58935212417173D+000.40256130331446D+00-.91865726350060D-05
+0.32320808815879D+00-.24914665473744D+000.74695034504146D-010.24914663442250D+00
+-.60438239199874D-010.41223777286873D+000.89115422966251D-01-.42047859920167D-04
+0.81079165751666D-010.76792543266589D-02-.47773516893588D-010.88555048233747D-01
+0.14788250932111D-03-.28959643202676D+00-.22367918658973D+00-.25167220695963D+00
+0.28142280659128D-010.60438230612160D-01-.41223771402157D+000.89115488042314D-01
+0.42050020016399D-040.81079190141503D-010.25167220948375D+00-.76792554180302D-02
+0.47773525274445D-010.88554997585819D-01-.14788401309223D-03-.28959646577834D+00
+0.22367920999753D+00-.28142327706212D-01-.38751672143611D-010.26174659331297D+00
+0.71294495979808D+000.74958886248550D-04-.19945608819055D+00-.74695000456062D-01
+    55  a      eigenvalue=0.55743784731460D+00   nsaos=60                       
+-.91983841509982D-010.61891871940634D+00-.49624780748652D-01-.35524671918649D-04
+0.19773319243908D+000.30122463560576D-01-.19599832959361D+000.19384470217299D+00
+0.82637663536998D-040.38424278471204D+000.89808248355883D-02-.73635873043144D-01
+0.11649684084897D+00-.50043091636992D-04-.26472766114441D+000.91983852509443D-01
+-.61891880469591D+00-.49624480882665D-010.35479484500666D-040.19773322360337D+00
+-.30122466886947D-010.19599835463018D+000.19384472460466D+00-.82661238866786D-04
+0.38424292541182D+00-.21327121765589D-010.14648767197718D+000.21327188056482D-01
+0.20525195195321D-01-.15668995378116D+00-.47350897499907D+000.30565729669521D-03
+-.30580822858175D+00-.18095124140472D-010.12669145239672D+000.23673259150737D+00
+-.37499676491857D-030.51624374236558D+000.35145364425259D+000.33515495751422D+00
+-.33517019748910D+00-.20525178615705D-010.15668984182158D+00-.47350911973024D+00
+-.30572590210520D-03-.30580843056250D+00-.33515508753118D+000.18095115107873D-01
+-.12669138803289D+000.23673276153225D+000.37505369763082D-030.51624384532879D+00
+-.35145376838648D+000.33517031187890D+00-.89808362411695D-020.73635950812802D-01
+0.11649685845008D+000.50042881522230D-04-.26472746808374D+00-.14648755730312D+00
+    56  a      eigenvalue=0.57167588407243D+00   nsaos=60                       
+-.14785361348828D-010.89997815462812D-01-.34955745770379D+00-.10080799463985D-03
+-.11101829602622D+000.32493826496613D-01-.22200758791947D+00-.32397860781713D+00
+-.84369619322307D-05-.15416145170377D+00-.28189300803295D-010.19588274713489D+00
+-.39438037665305D+000.94752180746826D-05-.26009138004961D+00-.14785402860247D-01
+0.89998093443634D-010.34955743113902D+00-.10078499943508D-030.11101833387619D+00
+0.32493837882661D-01-.22200765892886D+000.32397864600851D+00-.85275079858713D-05
+0.15416132320110D+000.37750557749696D-010.21383686439976D+000.37750512353497D-01
+0.42182617532947D-01-.29122277190942D+000.14643104429107D+00-.40893228021811D-03
+0.55272842608992D+00-.31765369597195D-010.22771651159931D+00-.53688319267525D+00
+0.25251287984361D-03-.14474885479294D+00-.26692531120659D+00-.31040726579446D+00
+0.32585271992494D+000.42182626295114D-01-.29122283590865D+00-.14643083011582D+00
+-.40899554195763D-03-.55272833810638D+00-.31040714890193D+00-.31765379852580D-01
+0.22771658189383D+000.53688309429716D+000.25258899358364D-030.14474861588936D+00
+-.26692515193545D+000.32585256450080D+00-.28189317998531D-010.19588286076416D+00
+0.39438033564958D+000.93641065591612D-050.26009154485871D+000.21383690999323D+00
+    57  a      eigenvalue=0.61294686677001D+00   nsaos=60                       
+0.17833674139224D-01-.11447904602333D+000.40555654621389D+000.16936535710324D-03
+-.11390411949187D+000.16888767780338D-01-.12098329306522D+00-.43758857727275D+00
+0.65397950639569D-050.38380682305224D-01-.18592977635040D-010.13341397869755D+00
+-.37653343240621D+000.45730141938137D-040.11537041046322D+000.17833688643290D-01
+-.11447914526233D+00-.40555651033929D+000.16932639943449D-030.11390431726333D+00
+0.16888740925507D-01-.12098310511568D+000.43758860067949D+000.64217753958567D-05
+-.38380553001123D-01-.19733133190410D+00-.46004131347439D-01-.19733135036329D+00
+0.36879621993961D-01-.28682061267948D+00-.66860453166383D+000.15067562161927D-03
+0.87525658171249D-01-.46289519771296D-010.34128062505351D+00-.17699057264221D+00
+-.30408863225556D-030.57689628389424D+000.27229994509040D+000.14835704268885D+00
+-.12362808723084D+000.36879620211989D-01-.28682059604608D+000.66860454624893D+00
+0.15076230960252D-03-.87525807487439D-010.14835694010841D+00-.46289526685868D-01
+0.34128067293741D+000.17699067798397D+00-.30410340634990D-03-.57689625080744D+00
+0.27229988632334D+00-.12362802371932D+00-.18592982413409D-010.13341401841022D+00
+0.37653333157545D+000.45654376101255D-04-.11537046186365D+00-.46004191670560D-01
+    58  a      eigenvalue=0.64326299612415D+00   nsaos=60                       
+0.21435389854572D-01-.14962495728632D+00-.14477802899019D+000.79224695561686D-04
+0.45459638204505D+000.20434124304242D-01-.15077447817430D+000.21820024596120D+00
+-.16214223760268D-040.35388530740442D-010.46663841830179D-01-.33355796314272D+00
+-.12812230582666D+000.52211965113573D-040.20516534519519D+00-.21435390088627D-01
+0.14962496131057D+00-.14477800173517D+00-.79210378734579D-040.45459610800692D+00
+-.20434130733831D-010.15077452832460D+000.21820000135985D+000.16165616527809D-04
+0.35388343092086D-010.10961053204054D+000.13565615121714D-01-.10961054615423D+00
+-.59162695029786D-010.44152497912830D+000.45407430138329D+000.21592785960793D-03
+-.60610107929105D+000.69196855640444D-01-.51399123415606D+000.53583570179946D+00
+0.85549052044382D-04-.38097485969792D+00-.11319291437930D-010.18071059130532D+00
+-.98608243357388D-010.59162687958765D-01-.44152492242674D+000.45407430283330D+00
+-.21591063569709D-03-.60610114996076D+00-.18071065738067D+00-.69196854876973D-01
+0.51399122391329D+000.53583571414002D+00-.85508385069862D-04-.38097484868167D+00
+0.11319292111184D-010.98608254966734D-01-.46663835544044D-010.33355791310183D+00
+-.12812260386107D+00-.52236622967760D-040.20516542232537D+00-.13565617586790D-01
+    59  a      eigenvalue=0.70418008449022D+00   nsaos=60                       
+-.54055176067706D-020.35717548329816D-010.43698773001710D-01-.99345392532381D-04
+-.69734443801254D+00-.61907263410037D-020.40866168574838D-01-.41585533313711D+00
+-.73652620431509D-04-.43381425565533D+000.61680503662941D-02-.41621225979341D-01
+-.53811009623016D+000.10803002430669D-030.23221823809668D+00-.54055357454809D-02
+0.35717679489600D-01-.43699060823779D-01-.99351490539657D-040.69734460608545D+00
+-.61907190888928D-020.40866123841259D-010.41585557403028D+00-.73746635757915D-04
+0.43381414260323D+000.41325454681610D-01-.52720617089963D-020.41325317326897D-01
+-.25331848239129D-010.19826528247416D+000.31774591978958D+000.11945880488487D-03
+-.42201406696969D+000.40299166313279D-01-.31011208028609D+000.31175834053778D+00
+0.77092674280397D-04-.24844714887629D+00-.35312854676085D-010.15904237357534D+00
+-.47522210472814D-01-.25331824397844D-010.19826510379872D+00-.31774590636105D+00
+0.11943750015907D-030.42201384655729D+000.15904229101604D+000.40299147022205D-01
+-.31011193100728D+00-.31175816539977D+000.77072443738755D-040.24844710718491D+00
+-.35312905013248D-01-.47522156104857D-010.61680124458229D-02-.41620945644899D-01
+0.53811012571784D+000.10795086158003D-03-.23221795421271D+00-.52719723990602D-02
+    60  a      eigenvalue=0.71865456114760D+00   nsaos=60                       
+-.40936617919680D-010.30115642513123D+000.65596402063553D+000.19623761038728D-03
+0.17428608715275D+000.56141642763058D-01-.40595479334421D+00-.38789312106691D+00
+0.11654469227410D-030.49261519092755D+00-.49786005514208D-010.35752648559132D+00
+-.24487815913551D+00-.41517158853570D-04-.55595019000723D+000.40936620428914D-01
+-.30115645145155D+000.65596411971437D+00-.19625244107813D-030.17428633963424D+00
+-.56141649606925D-010.40595484545199D+00-.38789302703689D+00-.11641367825181D-03
+0.49261539684356D+00-.27379786689961D+000.26824752685315D+000.27379792624466D+00
+0.13230224012596D-01-.82792274182898D-010.37448827840585D+00-.16503411792263D-03
+0.16119738636919D-010.10675463241608D-01-.88216236168632D-010.75097427897248D-02
+0.14802903813735D-03-.22493903114685D+00-.13690223337404D+00-.44685325555225D-01
+0.65004818378677D-01-.13230231394951D-010.82792336890003D-010.37448808460682D+00
+0.16511043651565D-030.16119867904649D-010.44685358082665D-01-.10675447114442D-01
+0.88216108813286D-010.75096424421949D-02-.14804728249691D-03-.22493888387375D+00
+0.13690218023103D+00-.65004811379614D-010.49786006225144D-01-.35752648899106D+00
+-.24487801164245D+000.41638408633164D-04-.55595022942551D+00-.26824751251134D+00
+$end

@@ -1,0 +1,79 @@
+$symmetry c1
+$coord    file=coord
+$title
+dvb_un_sp test
+$operating system unix
+$uff
+         1         1          0 ! maxcycle,modus,nqeq
+    111111                      ! iterm
+  0.10D-07  0.10D-04            ! econv,gconv
+      0.00  1.10                ! qtot,dfac
+  0.10D+03  0.10D-04       0.30 ! epssteep,epssearch,dqmax
+        25      0.10       0.00 ! mxls,dhls,ahls
+      1.00      0.00       0.00 ! alpha,beta,gamma
+         F         F          F ! transform,lnumhess,lmd
+$uffhessian file=uffhessian0-0
+$ufftopology file=ufftopology
+$forceinit on
+   diag=default
+$user-defined bonds    file=coord
+$atoms
+c  1-2,4,6-7,9,11,14,16,19                                                     \
+   basis =c sto-3g hondo
+h  3,5,8,10,12-13,15,17-18,20                                                  \
+   basis =h sto-3g hondo
+$basis    file=basis
+$rundimensions
+   dim(fock,dens)=1860
+   natoms=20
+   nshell=40
+   nbf(CAO)=60
+   nbf(AO)=60
+   dim(trafo[SAO<-->AO/CAO])=60
+   rhfshells=1
+$uhfmo_alpha   file=alpha
+$uhfmo_beta   file=beta
+$scfiterlimit       30
+$thize     0.10000000E-04
+$thime        5
+$scfdump
+$scfintunit
+ unit=30       size=0        file=twoint
+$scfdiis
+$drvopt
+   cartesian  on
+   basis      off
+   global     off
+   hessian    on
+   dipole     on
+   nuclear polarizability
+$forceapprox    file=forceapprox
+$lock off
+$dft
+   functional b3-lyp
+   gridsize   m3
+$scfconv   6
+$scfdamp   start=0.700  step=0.050  min=0.050
+$scforbitalshift  closedshell=.05
+$alpha shells
+ a       1-35                                   ( 1 )
+$beta shells
+ a       1-34                                   ( 1 )
+ a       1-34                                   ( 1 )
+$last step     dscf
+$last SCF energy change = -382.04324
+$optinfo       file=optinfo
+$hessapprox   file=hessapprox
+$statistics  off
+$2e-ints_shell_statistics    file=metastase
+$scfmo   file=mos
+$closed shells
+ a       1-35                                   ( 2 )
+ a       1-35                                   ( 2 )
+$energy    file=energy
+$grad    file=gradient
+$orbital_max_rnorm 0.45006960733737E-04
+$dipole from dscf
+  x     0.00000489207096    y     0.00001791519397    z     0.00000255420277    a.u.
+   | dipole | =    0.0000476478  debye
+$end
