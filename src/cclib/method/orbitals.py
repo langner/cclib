@@ -49,9 +49,8 @@ class Orbitals(Method):
         # If there are beta orbitals, we can assume the system is
         # closed shell if the orbital energies are identical within
         # numerical accuracy.
-        diff = numpy.abs(self.data.moenergies[1] - self.data.moenergies[0])
         precision = 10e-6
-        return any(diff < precision)
+        return numpy.allclose(*self.data.moenergies, atol=precision)
 
 
 if __name__ == "__main__":
