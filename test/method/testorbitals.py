@@ -24,7 +24,7 @@ from cclib.parser import Gaussian
 
 
 class RestrictedCalculationTest(unittest.TestCase):
-    """Check RHF calculation."""
+    """Check retricted calculation."""
     def setUp(self):
         self.data, self.logfile = getdatafile(Gaussian, "basicGaussian09", "dvb_sp.out")
 
@@ -33,7 +33,7 @@ class RestrictedCalculationTest(unittest.TestCase):
 
 
 class UnrestrictedCalculationTest(unittest.TestCase):
-    """Check RHF calculation."""
+    """Check unrestricted calculation."""
     def setUp(self):
         self.data, self.logfile = getdatafile(Gaussian, "basicGaussian09", "dvb_un_sp.log")
 
@@ -42,6 +42,7 @@ class UnrestrictedCalculationTest(unittest.TestCase):
 
 
 # TODO: add a case (regression) with an unrestricted calculation for a closed shell system.
+# For example, in regressions: Gaussian/Gaussian03/Mo4OSibdt2
 
 
 tests = [RestrictedCalculationTest, UnrestrictedCalculationTest]
