@@ -21,14 +21,13 @@ from .calculationmethod import Method
 
 class Orbitals(Method):
     """A class for orbital related methods."""
-    
+
     def __init__(self, data, progress=None, \
                  loglevel=logging.INFO, logname="Log"):
 
         # Call the __init__ method of the superclass.
         super(Orbitals, self).__init__(data, progress, loglevel, logname)
-        self.fragresults = None
-        
+
     def __str__(self):
         """Return a string representation of the object."""
         return "Orbitals"
@@ -40,17 +39,26 @@ class Orbitals(Method):
     def closed_shell(self):
         """Return Boolean indicating if system is closed shell."""
 
-        # Restricted calculation will have one set of orbitals and are
-        # therefore closed shell by definition.
-        if len(self.data.mocoeffs) == 1:
-            assert len(self.data.moenergies) == 1
+        # If there is only one HOMO, the system is closed-shell by
+        # definition.
+        if len(self.data.homos) == 1:
             return True
-
-        # If there are beta orbitals, we can assume the system is
-        # closed shell if the orbital energies are identical within
-        # numerical accuracy.
-        precision = 10e-6
-        return numpy.allclose(*self.data.moenergies, atol=precision)
+        # Both unrestricted and restricted open-shell calculations
+        # may have two HOMOs.
+        else:
+            # In the case where the two HOMOs are different (any spin
+            # multiplicity other than singlet), the system is
+            # open-shell by definition.
+            if self.data.homos[0] != self.data.homos[1]:
+                return False
+            # In the case where the two HOMOs are identical, it is not
+            # sufficient to just check MO energies. The way we
+            # differentiate between a restricted calculation run as
+            # unrestricted and a broken-symmetry singlet is the
+            # difference in MO coefficients.
+            else:
+                precision = 10e-6
+                return numpy.allclose(*self.data.mocoeffs, atol=precision)
 
 
 if __name__ == "__main__":
