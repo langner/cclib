@@ -20,11 +20,12 @@ import numpy
 sys.path.append("..")
 from test_data import getdatafile
 from cclib.method import Orbitals
+from cclib.parser import DALTON
 from cclib.parser import Gaussian
 
 
 class RestrictedCalculationTest(unittest.TestCase):
-    """Check retricted calculation."""
+    """Check restricted calculation."""
     def setUp(self):
         self.data, self.logfile = getdatafile(Gaussian, "basicGaussian09", "dvb_sp.out")
 
@@ -41,11 +42,20 @@ class UnrestrictedCalculationTest(unittest.TestCase):
         self.assertFalse(Orbitals(self.data).closed_shell())
 
 
+class RestrictedOpenShellCalculationTest(unittest.TestCase):
+    """Check restricted open-shell calculation."""
+    def setUp(self):
+        self.data, self.logfile = getdatafile(DALTON, "basicDALTON-2015", "dvb_sp_un_hf.out")
+
+    def test_closed_shell(self):
+        self.assertFalse(Orbitals(self.data).closed_shell())
+
+
 # TODO: add a case (regression) with an unrestricted calculation for a closed shell system.
 # For example, in regressions: Gaussian/Gaussian03/Mo4OSibdt2
 
 
-tests = [RestrictedCalculationTest, UnrestrictedCalculationTest]
+tests = [RestrictedCalculationTest, UnrestrictedCalculationTest, RestrictedOpenShellCalculationTest]
 
 
 if __name__ == "__main__":

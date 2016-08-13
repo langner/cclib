@@ -20,5 +20,6 @@ if __name__ == "__main__":
     from testcda import *
     from testmbo import *
     from testnuclear import *
+    from testorbitals import *
     from testpopulation import *
     unittest.main()
