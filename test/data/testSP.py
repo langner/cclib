@@ -133,6 +133,10 @@ class GenericSPTest(unittest.TestCase):
         """Is the index of the HOMO equal to 34?"""
         numpy.testing.assert_array_equal(self.data.homos, numpy.array([34],"i"), "%s != array([34],'i')" % numpy.array_repr(self.data.homos))
 
+    def testorbitals(self):
+        """Is the molecule closed-shell?"""
+        self.assertTrue(self.data.closed_shell)
+
     def testscfvaluetype(self):
         """Are scfvalues and its elements the right type??"""
         self.assertEquals(type(self.data.scfvalues),type([]))

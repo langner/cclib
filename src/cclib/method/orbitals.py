@@ -46,6 +46,7 @@ class Orbitals(Method):
         # Both unrestricted and restricted open-shell calculations
         # may have two HOMOs.
         else:
+            precision = 10e-6
             # In the case where the two HOMOs are different (any spin
             # multiplicity other than singlet), the system is
             # open-shell by definition.
@@ -54,11 +55,14 @@ class Orbitals(Method):
             # In the case where the two HOMOs are identical, it is not
             # sufficient to just check MO energies. The way we
             # differentiate between a restricted calculation run as
-            # unrestricted and a broken-symmetry singlet is the
-            # difference in MO coefficients.
-            else:
-                precision = 10e-6
+            # unrestricted and a broken-symmetry or open-shell singlet
+            # is the difference in MO coefficients.
+            elif hasattr(self.data, 'mocoeffs'):
                 return numpy.allclose(*self.data.mocoeffs, atol=precision)
+            # The two HOMOs are identical, but no MO coefficients are
+            # present, so check the energies.
+            else:
+                return numpy.allclose(*self.data.moenergies, atol=precision)
 
 
 if __name__ == "__main__":

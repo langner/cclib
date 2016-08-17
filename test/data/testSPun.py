@@ -59,6 +59,10 @@ class GenericSPunTest(unittest.TestCase):
         msg = "%s != array([34,33],'i')" % numpy.array_repr(self.data.homos)
         numpy.testing.assert_array_equal(self.data.homos, numpy.array([34,33],"i"), msg)
 
+    def testorbitals(self):
+        """Is the molecule open-shell?"""
+        self.assertFalse(self.data.closed_shell)
+
     def testmoenergies(self):
         """Are the dims of the moenergies equals to 2 x nmo?"""
         self.assertEquals(len(self.data.moenergies), 2)
