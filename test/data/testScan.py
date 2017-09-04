@@ -37,11 +37,13 @@ class GenericScanTest_optdone_bool(unittest.TestCase):
     @skipForParser("ORCA", "Not implemented")
     def testoptstatus(self):
         """Does optstatus contain expected values?"""
+        OPT_NEW = self.data.OPT_NEW
         OPT_DONE = self.data.OPT_DONE
 
         # The input and final coordinates were at a stationary points.
-        self.assertEquals(self.data.optstatus[0], OPT_DONE)
-        self.assertEquals(self.data.optstatus[-1], OPT_DONE)
+        self.assertEqual(self.data.optstatus[0] & OPT_NEW, OPT_NEW)
+        self.assertEqual(self.data.optstatus[0] & OPT_DONE, OPT_DONE)
+        self.assertEqual(self.data.optstatus[-1] & OPT_DONE, OPT_DONE)
 
 
 class GenericScanTest(unittest.TestCase):
@@ -71,9 +73,9 @@ class GenericScanTest(unittest.TestCase):
         """Does optstatus contain expected values?"""
         OPT_NEW = self.data.OPT_NEW
         OPT_DONE = self.data.OPT_DONE
-
+        print(self.data.optstatus)
         # The input coordinates were at a stationary point.
-        self.assertEquals(self.data.optstatus[0], OPT_DONE)
+        self.assertEqual(self.data.optstatus[0] & OPT_DONE, 1)
 
         self.assertEqual(len(self.data.optstatus), len(self.data.optdone))
         for idone in self.data.optdone:
