@@ -349,8 +349,8 @@ class ccData(object):
             - The input geometry for simple optimisations or single points
         """
         if hasattr(self, 'optstatus'):
-            new_indexes = [x for x, y in enumerate(self.optstatus) if y & self.OPT_UNKNOWN > 0]
-            return self.atomcoords[new_indexes]
+            unknown_indexes = [x for x, y in enumerate(self.optstatus) if y == self.OPT_UNKNOWN]
+            return self.atomcoords[unknown_indexes]
         else:
             return self.atomcoords
 
@@ -364,8 +364,8 @@ class ccData(object):
             - The input geometry for simple optimisations or single points
         """
         if hasattr(self, 'optstatus'):
-            new_indexes = [x for x, y in enumerate(self.optstatus) if y & self.OPT_UNCONVERGED > 0]
-            return self.atomcoords[new_indexes]
+            unconverged_indexes = [x for x, y in enumerate(self.optstatus) if y & self.OPT_UNCONVERGED > 0]
+            return self.atomcoords[unconverged_indexes]
         else:
             return self.atomcoords
 
