@@ -325,7 +325,7 @@ class ccData(object):
             return self.atomcoords
 
     @property
-    def starting_geometries(self):
+    def new_geometries(self):
         """
         Return all starting geometries.
 
