@@ -66,7 +66,6 @@ class GenericScanTest(unittest.TestCase):
         geovalues = self.data.geovalues[temp]
         numpy.testing.assert_array_equal(geovalues, geovalues_from_index)
 
-    @skipForParser("Gaussian", "Not working as expected")
     @skipForParser("Jaguar", "Not implemented")
     @skipForParser("ORCA", "Not implemented")
     def testoptstatus(self):
@@ -77,10 +76,10 @@ class GenericScanTest(unittest.TestCase):
         # The input coordinates were at a stationary point.
         self.assertTrue(self.data.optstatus[0] & OPT_DONE)
 
-        self.assertEqual(len(self.data.optstatus), len(self.data.optdone))
+        self.assertEqual(len(self.data.converged_geometries), len(self.data.optdone))
         for idone in self.data.optdone:
             self.assertTrue(self.data.optstatus[idone] & OPT_DONE)
-            if idone != len(self.data.optdone) - 1:
+            if idone != len(self.data.optstatus) - 1:
                 self.assertTrue(self.data.optstatus[idone + 1] & OPT_NEW)
 
 
