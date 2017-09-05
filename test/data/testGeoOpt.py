@@ -152,10 +152,8 @@ class GenericGeoOptTest(unittest.TestCase):
     def testoptstatus(self):
         """Is optstatus consistent with geovalues and reasonable?"""
         self.assertEqual(len(self.data.optstatus), len(self.data.geovalues))
-        self.assertEqual(self.data.optstatus[0], self.data.OPT_NEW)
-        for i in range(1, len(self.data.optstatus)-1):
-            self.assertEqual(self.data.optstatus[i], self.data.OPT_UNKNOWN)
-        self.assertEqual(self.data.optstatus[-1], self.data.OPT_DONE)
+        self.assertTrue(self.data.optstatus[0] & self.data.OPT_NEW)
+        self.assertTrue(self.data.optstatus[-1] & self.data.OPT_DONE)
 
     def testmoenergies(self):
         """Are only the final MOs parsed?"""
